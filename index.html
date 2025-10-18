@@ -5,172 +5,173 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lecel Echavarre | Web Developer Portfolio</title>
     <meta name="description" content="Portfolio of Lecel Ann Harvey Echavarre - Web Developer specializing in PHP, JavaScript, and modern web technologies">
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="sidebar">
-        <div class="profile-pic">
+        <div class="profile-section">
             <div class="profile-image"></div>
-            <div class="profile-name">Lecel Echavarre</div>
-            <div class="profile-username">@lecelannharveyechavarre</div>
+            <div class="profile-info">
+                <div class="profile-name">Lecel Echavarre</div>
+                <div class="profile-username">@lecelannharveyechavarre</div>
+            </div>
             <div class="profile-actions">
                 <a href="#contact" class="hire-me-btn">
-                    <span class="blink-dot"></span>
-                    Hire Me
+                    <span class="status-dot"></span>
+                    Available for Hire
                 </a>
-                <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle theme">
                     <i class="fa-solid fa-sun"></i>
                     <i class="fa-solid fa-moon"></i>
                 </button>
             </div>
         </div>
-        <nav>            
+
+        <nav>
             <ul>
                 <li><a href="#home" class="active"><i class="fas fa-home"></i><span>Home</span></a></li>
-                <li><a href="#about"><i class="fas fa-user"></i><span>About Me</span></a></li>
-                <li><a href="#projects"><i class="fas fa-project-diagram"></i><span>Projects</span></a></li>
+                <li><a href="#about"><i class="fas fa-user"></i><span>About</span></a></li>
+                <li><a href="#projects"><i class="fas fa-folder-open"></i><span>Projects</span></a></li>
                 <li><a href="#contact"><i class="fas fa-envelope"></i><span>Contact</span></a></li>
             </ul>
         </nav>
-        
+
         <div class="social-links">
-            <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://twitter.com/yourusername" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://twitter.com/yourusername" target="_blank" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
         </div>
-    </div>    
+    </div>
 
     <main>
         <section id="home" class="section active">
-            <h1>Hello, I'm Lecel Ann Harvey Echavarre</h1>
-            <div class="location-info">
-                <div class="location-group">
-                    <span class="dot"></span>
-                    <span>Based in Victoria, Tarlac</span>
+            <div class="hero-content">
+                <h1 class="hero-title">Hello, I'm Lecel Ann Harvey Echavarre</h1>
+                <div class="location-info">
+                    <div class="location-item">
+                        <span class="location-dot"></span>
+                        <span>Based in Victoria, Tarlac</span>
+                    </div>
+                    <div class="location-item">
+                        <span class="location-dot"></span>
+                        <span>Available for On-site Work</span>
+                    </div>
                 </div>
-                <div class="location-group">
-                    <span class="dot"></span>
-                    <span>Available for On-site Work</span>
-                </div>
+                <p class="hero-description">
+                    I aim to contribute to organizational growth by leveraging my technical expertise, problem-solving skills, and experience in diverse environments. As a motivated and adaptable professional, I'm committed to driving innovation, fostering collaboration, and embracing continuous learning.
+                </p>
             </div>
-            <p>I aim to contribute to the organization's growth by leveraging my technical expertise, problem-solving skills, and experience in diverse environments. As a motivated and adaptable professional, I'm committed to driving innovation, fostering collaboration, and embracing continuous learning.</p>
-            
-            <hr class="main-divider">
-            
-            <div class="skills-section">
-                <h2><i class="fas fa-code"></i> Skills</h2>
-                <p class="skills-caption">My professional skill set and technical expertise.</p>
+
+            <div class="divider"></div>
+
+            <div class="content-section">
+                <h2 class="content-section-title">
+                    <i class="fas fa-code"></i>
+                    Technical Skills
+                </h2>
+                <p class="content-section-description">My professional skill set and technical expertise</p>
                 <div class="skills-container">
                     <div class="skills-track">
-                        <div class="skills-scroll">
-                            <div class="skill-badge">
-                                <i class="fab fa-php"></i>
-                                <span>PHP</span>
-                            </div>
-                            <div class="skill-badge">
-                                <i class="fab fa-html5"></i>
-                                <span>HTML5</span>
-                            </div>
-                            <div class="skill-badge">
-                                <i class="fab fa-css3-alt"></i>
-                                <span>CSS3</span>
-                            </div>
-                            <div class="skill-badge">
-                                <i class="fab fa-js"></i>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="skill-badge">
-                                <i class="fab fa-java"></i>
-                                <span>Java</span>
-                            </div>
-                            <div class="skill-badge">
-                                <i class="fas fa-database"></i>
-                                <span>MySQL</span>
-                            </div>
-                            <div class="skill-badge">
-                                <i class="fab fa-python"></i>
-                                <span>Python</span>
-                            </div>
-                        </div>
-                        <div class="skills-scroll" aria-hidden="true">
-                            <div class="skill-badge">
-                                <i class="fab fa-php"></i>
-                                <span>PHP</span>
-                            </div>
-                            <div class="skill-badge">
-                                <i class="fab fa-html5"></i>
-                                <span>HTML5</span>
-                            </div>
-                            <div class="skill-badge">
-                                <i class="fab fa-css3-alt"></i>
-                                <span>CSS3</span>
-                            </div>
-                            <div class="skill-badge">
-                                <i class="fab fa-js"></i>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="skill-badge">
-                                <i class="fab fa-java"></i>
-                                <span>Java</span>
-                            </div>
-                            <div class="skill-badge">
-                                <i class="fas fa-database"></i>
-                                <span>MySQL</span>
-                            </div>
-                            <div class="skill-badge">
-                                <i class="fab fa-python"></i>
-                                <span>Python</span>
-                            </div>
-                        </div>
+                        <div class="skill-badge"><i class="fab fa-php"></i><span>PHP</span></div>
+                        <div class="skill-badge"><i class="fab fa-html5"></i><span>HTML5</span></div>
+                        <div class="skill-badge"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+                        <div class="skill-badge"><i class="fab fa-js"></i><span>JavaScript</span></div>
+                        <div class="skill-badge"><i class="fab fa-java"></i><span>Java</span></div>
+                        <div class="skill-badge"><i class="fas fa-database"></i><span>MySQL</span></div>
+                        <div class="skill-badge"><i class="fab fa-python"></i><span>Python</span></div>
+                        <div class="skill-badge"><i class="fab fa-php"></i><span>PHP</span></div>
+                        <div class="skill-badge"><i class="fab fa-html5"></i><span>HTML5</span></div>
+                        <div class="skill-badge"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+                        <div class="skill-badge"><i class="fab fa-js"></i><span>JavaScript</span></div>
+                        <div class="skill-badge"><i class="fab fa-java"></i><span>Java</span></div>
+                        <div class="skill-badge"><i class="fas fa-database"></i><span>MySQL</span></div>
+                        <div class="skill-badge"><i class="fab fa-python"></i><span>Python</span></div>
                     </div>
                 </div>
             </div>
-            
-            <hr class="main-divider">
-            
-            <div class="services-section">
-                <h2><i class="fas fa-laptop-code"></i> Services</h2>
-                <p class="services-caption">I offer reliable and customized web solutions, aiming to contribute to your company's growth by enhancing your online presence and delivering efficient, user-friendly digital experiences.</p>
+
+            <div class="divider"></div>
+
+            <div class="content-section">
+                <h2 class="content-section-title">
+                    <i class="fas fa-laptop-code"></i>
+                    Services
+                </h2>
+                <p class="content-section-description">
+                    I offer reliable and customized web solutions, aiming to contribute to your company's growth by enhancing your online presence and delivering efficient, user-friendly digital experiences.
+                </p>
                 <div class="cta-box">
-                    <h3>Let's work together!</h3>
+                    <h3>Let's Work Together</h3>
                     <p>Feel free to reach out anytime—I'm always open to discussing new projects, ideas, or opportunities to collaborate.</p>
-                    <a href="#contact" class="cta-button">Contact me</a>
+                    <a href="#contact" class="cta-button">
+                        <i class="fas fa-paper-plane"></i>
+                        Get in Touch
+                    </a>
                 </div>
             </div>
         </section>
 
         <section id="about" class="section">
-            <h2><i class="fas fa-user-circle"></i> About Me</h2>
+            <div class="section-header">
+                <h1 class="section-title">
+                    <i class="fas fa-user-circle"></i>
+                    About Me
+                </h1>
+                <p class="section-subtitle">
+                    Learn more about my background, expertise, and what drives me as a developer.
+                </p>
+            </div>
+
             <div class="about-content">
-                <div class="about-text">
-                    <p>Hello! I'm Lecel Ann Harvey Echavarre, a passionate web developer based in Victoria, Tarlac. With expertise in both front-end and back-end technologies, I specialize in creating dynamic, responsive, and user-friendly web applications.</p>
-                    
-                    <p>My journey in web development has equipped me with a diverse skill set including PHP, JavaScript, HTML5, CSS3, and database management with MySQL. I'm constantly learning and adapting to new technologies to deliver cutting-edge solutions.</p>
-                    
-                    <h3><i class="fas fa-graduation-cap"></i> Education & Background</h3>
-                    <p>My educational background has provided me with a strong foundation in computer science principles, software development methodologies, and problem-solving techniques. I combine this theoretical knowledge with practical experience to deliver robust solutions.</p>
-                    
-                    <h3><i class="fas fa-bullseye"></i> What I Bring to the Table</h3>
-                    <ul class="about-list">
-                        <li><i class="fas fa-check-circle"></i> Strong problem-solving and analytical skills</li>
-                        <li><i class="fas fa-check-circle"></i> Attention to detail and commitment to quality</li>
-                        <li><i class="fas fa-check-circle"></i> Excellent collaboration and communication abilities</li>
-                        <li><i class="fas fa-check-circle"></i> Adaptability to new technologies and frameworks</li>
-                        <li><i class="fas fa-check-circle"></i> Passion for continuous learning and improvement</li>
-                    </ul>
-                    
-                    <h3><i class="fas fa-heart"></i> Beyond Coding</h3>
-                    <p>When I'm not coding, I enjoy staying updated with the latest tech trends, contributing to open-source projects, and exploring new ways to solve complex problems. I believe in the power of technology to make a positive impact on people's lives.</p>
-                </div>
+                <p>
+                    Hello! I'm Lecel Ann Harvey Echavarre, a passionate web developer based in Victoria, Tarlac. With expertise in both front-end and back-end technologies, I specialize in creating dynamic, responsive, and user-friendly web applications.
+                </p>
+                
+                <p>
+                    My journey in web development has equipped me with a diverse skill set including PHP, JavaScript, HTML5, CSS3, and database management with MySQL. I'm constantly learning and adapting to new technologies to deliver cutting-edge solutions.
+                </p>
+                
+                <h3><i class="fas fa-graduation-cap"></i> Education & Background</h3>
+                <p>
+                    My educational background has provided me with a strong foundation in computer science principles, software development methodologies, and problem-solving techniques. I combine this theoretical knowledge with practical experience to deliver robust solutions.
+                </p>
+                
+                <h3><i class="fas fa-bullseye"></i> What I Bring to the Table</h3>
+                <ul class="about-list">
+                    <li><i class="fas fa-check-circle"></i> Strong problem-solving and analytical skills</li>
+                    <li><i class="fas fa-check-circle"></i> Attention to detail and commitment to quality</li>
+                    <li><i class="fas fa-check-circle"></i> Excellent collaboration and communication abilities</li>
+                    <li><i class="fas fa-check-circle"></i> Adaptability to new technologies and frameworks</li>
+                    <li><i class="fas fa-check-circle"></i> Passion for continuous learning and improvement</li>
+                </ul>
+                
+                <h3><i class="fas fa-heart"></i> Beyond Coding</h3>
+                <p>
+                    When I'm not coding, I enjoy staying updated with the latest tech trends, contributing to open-source projects, and exploring new ways to solve complex problems. I believe in the power of technology to make a positive impact on people's lives.
+                </p>
             </div>
         </section>
 
         <section id="projects" class="section">
-            <h2><i class="fas fa-folder-open"></i> Projects</h2>
-            <p class="section-intro">Here are some of the projects I've worked on, showcasing my skills and expertise in web development.</p>
+            <div class="section-header">
+                <h1 class="section-title">
+                    <i class="fas fa-folder-open"></i>
+                    Featured Projects
+                </h1>
+                <p class="section-subtitle">
+                    Here are some of the projects I've worked on, showcasing my skills and expertise in web development.
+                </p>
+            </div>
+
             <div class="projects-grid">
-                <div class="project">
+                <div class="project-card">
                     <div class="project-icon">
                         <i class="fas fa-shopping-cart"></i>
                     </div>
@@ -182,12 +183,16 @@
                         <span class="tech-tag">JavaScript</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> View Project</a>
-                        <a href="#" class="project-link"><i class="fab fa-github"></i> Source Code</a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> View Project
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
                     </div>
                 </div>
-                
-                <div class="project">
+
+                <div class="project-card">
                     <div class="project-icon">
                         <i class="fas fa-tasks"></i>
                     </div>
@@ -199,12 +204,16 @@
                         <span class="tech-tag">CSS3</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> View Project</a>
-                        <a href="#" class="project-link"><i class="fab fa-github"></i> Source Code</a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> View Project
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
                     </div>
                 </div>
-                
-                <div class="project">
+
+                <div class="project-card">
                     <div class="project-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
@@ -216,12 +225,16 @@
                         <span class="tech-tag">MySQL</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> View Project</a>
-                        <a href="#" class="project-link"><i class="fab fa-github"></i> Source Code</a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> View Project
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
                     </div>
                 </div>
-                
-                <div class="project">
+
+                <div class="project-card">
                     <div class="project-icon">
                         <i class="fas fa-blog"></i>
                     </div>
@@ -233,52 +246,61 @@
                         <span class="tech-tag">CSS3</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> View Project</a>
-                        <a href="#" class="project-link"><i class="fab fa-github"></i> Source Code</a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> View Project
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="contact" class="section">
-            <h2><i class="fas fa-paper-plane"></i> Get In Touch</h2>
-            <p class="section-intro">I'm always interested in hearing about new opportunities and projects. Feel free to reach out!</p>
-            
-            <div class="contact-container">
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <p>lecel.echavarre@example.com</p>
-                            </div>
+            <div class="section-header">
+                <h1 class="section-title">
+                    <i class="fas fa-paper-plane"></i>
+                    Get In Touch
+                </h1>
+                <p class="section-subtitle">
+                    I'm always interested in hearing about new opportunities and projects. Feel free to reach out!
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info-card">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-item-content">
+                            <h4>Email</h4>
+                            <p>lecel.echavarre@example.com</p>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <h4>Phone</h4>
-                                <p>+63 123 456 7890</p>
-                            </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-item-content">
+                            <h4>Phone</h4>
+                            <p>+63 123 456 7890</p>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Location</h4>
-                                <p>Victoria, Tarlac, Philippines</p>
-                            </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-item-content">
+                            <h4>Location</h4>
+                            <p>Victoria, Tarlac, Philippines</p>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-clock"></i>
-                            <div>
-                                <h4>Availability</h4>
-                                <p>Open to full-time opportunities</p>
-                            </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="contact-item-content">
+                            <h4>Availability</h4>
+                            <p>Open to full-time opportunities</p>
                         </div>
                     </div>
                 </div>
-                
-                <div class="contact-form-container">
+
+                <div class="contact-form-card">
                     <h3>Send me a message</h3>
                     <form class="contact-form" id="contactForm">
                         <div class="form-group">
@@ -291,7 +313,7 @@
                             <input type="text" id="subject" name="subject" placeholder="Subject" required>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
                         </div>
                         <button type="submit" class="submit-btn">
                             <i class="fas fa-paper-plane"></i> Send Message
@@ -301,7 +323,7 @@
             </div>
         </section>
     </main>
-    
+
     <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
         <i class="fas fa-arrow-up"></i>
     </button>
