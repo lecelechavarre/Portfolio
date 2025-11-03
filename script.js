@@ -1,399 +1,151 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // ============================================
-    // DOM Element References
-    // ============================================
+    // Theme toggle functionality
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-mode');
+    }
+    
+    // Toggle theme
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+
+    // Mobile menu functionality
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    
+    mobileMenuToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('active');
+            }
+        });
+    });
+
+    // Navigation functionality
     const navLinks = document.querySelectorAll('nav a');
     const sections = document.querySelectorAll('.section');
-    const scrollToTopBtn = document.getElementById('scrollToTop');
-    const contactForm = document.getElementById('contactForm');
-
-    // ============================================
-    // Theme Management
-    // ============================================
     
-    /**
-     * Initialize theme from localStorage
-     */
-    const initTheme = () => {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            body.classList.add('dark-mode');
-        }
-    };
-
-    /**
-     * Toggle between light and dark mode
-     */
-    const toggleTheme = () => {
-        body.classList.toggle('dark-mode');
-        const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
-        localStorage.setItem('theme', currentTheme);
-    };
-
-    // Initialize theme on page load
-    initTheme();
-
-    // Add event listener to theme toggle button
-    if (themeToggle) {
-        themeToggle.addEventListener('click', toggleTheme);
-    }
-
-    // ============================================
-    // Navigation Management
-    // ============================================
-    
-    /**
-     * Navigate to a specific section
-     * @param {string} targetId - The ID of the section to navigate to
-     */
     const navigateToSection = (targetId) => {
-        // Remove active class from all navigation links
-        navLinks.forEach(link => link.classList.remove('active'));
+        // Remove active class from all links and sections
+        navLinks.forEach(l => l.classList.remove('active'));
+        sections.forEach(section => section.classList.remove('active'));
         
-        // Add active class to the corresponding navigation link
+        // Add active class to corresponding nav link and section
         const correspondingLink = document.querySelector(`nav a[href="#${targetId}"]`);
         if (correspondingLink) {
             correspondingLink.classList.add('active');
         }
-
-        // Hide all sections
-        sections.forEach(section => section.classList.remove('active'));
         
-        // Show target section with animation
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-            targetSection.classList.add('active');
-            
-            // Scroll to top on mobile devices
-            if (window.innerWidth <= 968) {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
+        document.getElementById(targetId).classList.add('active');
         
-        // Update URL without page reload
-        history.pushState(null, '', `#${targetId}`);
+        // Scroll to top of section
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    /**
-     * Set up navigation link event listeners
-     */
-    const initNavigation = () => {
-        // Add click event to main navigation links
-        navLinks.forEach(link => {
+    // Add click event listeners to all navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            navigateToSection(targetId);
+        });
+    });
+
+    // Add click event listeners to any other links that navigate to sections
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        if (!link.closest('nav')) {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const targetId = link.getAttribute('href').substring(1);
                 navigateToSection(targetId);
             });
-        });
-
-        // Add click event to all internal anchor links (e.g., CTA buttons)
-        document.querySelectorAll('a[href^="#"]').forEach(link => {
-            if (!link.closest('nav')) {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetId = link.getAttribute('href').substring(1);
-                    if (targetId) {
-                        navigateToSection(targetId);
-                    }
-                });
-            }
-        });
-
-        // Handle browser back/forward buttons
-        window.addEventListener('popstate', () => {
-            const hash = window.location.hash.substring(1);
-            navigateToSection(hash || 'home');
-        });
-
-        // Initialize with URL hash if present
-        if (window.location.hash) {
-            const initialHash = window.location.hash.substring(1);
-            navigateToSection(initialHash);
         }
-    };
-
-    // Initialize navigation
-    initNavigation();
-
-    // ============================================
-    // Scroll to Top Button
-    // ============================================
-    
-    /**
-     * Show/hide scroll to top button based on scroll position
-     */
-    const handleScroll = () => {
-        if (window.pageYOffset > 300) {
-            scrollToTopBtn.classList.add('visible');
-        } else {
-            scrollToTopBtn.classList.remove('visible');
-        }
-    };
-
-    /**
-     * Scroll to top of page smoothly
-     */
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    };
-
-    // Add scroll event listener with debouncing
-    let scrollTimeout;
-    window.addEventListener('scroll', () => {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(handleScroll, 100);
     });
 
-    // Add click event to scroll to top button
-    if (scrollToTopBtn) {
-        scrollToTopBtn.addEventListener('click', scrollToTop);
-    }
-
-    // ============================================
-    // Contact Form Handling
-    // ============================================
-    
-    /**
-     * Handle contact form submission
-     * @param {Event} e - The form submit event
-     */
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
+    // GitHub Repositories Fetch
+    async function fetchGitHubRepos() {
+        const projectsGrid = document.getElementById('projectsGrid');
         
-        // Get form data
-        const formData = {
-            name: document.getElementById('name')?.value,
-            email: document.getElementById('email')?.value,
-            subject: document.getElementById('subject')?.value,
-            message: document.getElementById('message')?.value
-        };
-        
-        // Validate form data
-        if (!formData.name || !formData.email || !formData.subject || !formData.message) {
-            showNotification('Please fill in all fields', 'error');
-            return;
-        }
-        
-        // Show success notification
-        showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-        
-        // Reset form
-        contactForm.reset();
-        
-        // Log form data (In production, send to backend)
-        console.log('Form submitted:', formData);
-        
-        // TODO: Implement actual form submission to backend
-        // Example: fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) })
-    };
-
-    // Add form submit event listener
-    if (contactForm) {
-        contactForm.addEventListener('submit', handleFormSubmit);
-    }
-
-    // ============================================
-    // Notification System
-    // ============================================
-    
-    /**
-     * Display a notification message
-     * @param {string} message - The notification message
-     * @param {string} type - The notification type ('success', 'error', 'info')
-     */
-    const showNotification = (message, type = 'info') => {
-        // Create notification element
-        const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
-        notification.textContent = message;
-        
-        // Set notification styles
-        const backgroundColor = {
-            success: '#10b981',
-            error: '#ef4444',
-            info: '#2563eb'
-        }[type] || '#2563eb';
-        
-        notification.style.cssText = `
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            padding: 16px 24px;
-            background: ${backgroundColor};
-            color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            z-index: 10000;
-            font-size: 15px;
-            font-weight: 500;
-            animation: slideIn 0.3s ease;
-            max-width: 400px;
-        `;
-
-        // Add notification animations to document if not already present
-        if (!document.getElementById('notification-styles')) {
-            const style = document.createElement('style');
-            style.id = 'notification-styles';
-            style.textContent = `
-                @keyframes slideIn {
-                    from { 
-                        transform: translateX(100%); 
-                        opacity: 0; 
-                    }
-                    to { 
-                        transform: translateX(0); 
-                        opacity: 1; 
-                    }
-                }
-                
-                @keyframes slideOut {
-                    from { 
-                        transform: translateX(0); 
-                        opacity: 1; 
-                    }
-                    to { 
-                        transform: translateX(100%); 
-                        opacity: 0; 
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-        }
-
-        // Add notification to DOM
-        document.body.appendChild(notification);
-
-        // Auto-remove notification after 3 seconds
-        setTimeout(() => {
-            notification.style.animation = 'slideOut 0.3s ease';
-            setTimeout(() => {
-                notification.remove();
-            }, 300);
-        }, 3000);
-    };
-
-    // ============================================
-    // Intersection Observer for Animations
-    // ============================================
-    
-    /**
-     * Initialize intersection observer for scroll animations
-     */
-    const initScrollAnimations = () => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        // Observe project cards for animation
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
-
-        // Observe other animatable elements
-        document.querySelectorAll('.about-list li').forEach((item, index) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateX(-20px)';
-            item.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
-            observer.observe(item);
-        });
-    };
-
-    // Initialize scroll animations
-    initScrollAnimations();
-
-    // ============================================
-    // Page Load Animation
-    // ============================================
-    
-    /**
-     * Animate page on load
-     */
-    const initPageAnimation = () => {
-        document.body.style.opacity = '0';
-        setTimeout(() => {
-            document.body.style.transition = 'opacity 0.5s ease';
-            document.body.style.opacity = '1';
-        }, 100);
-    };
-
-    // Initialize page animation
-    window.addEventListener('load', initPageAnimation);
-
-    // ============================================
-    // Keyboard Navigation
-    // ============================================
-    
-    /**
-     * Handle keyboard shortcuts for navigation
-     * Alt + 1: Home
-     * Alt + 2: About
-     * Alt + 3: Projects
-     * Alt + 4: Contact
-     */
-    const handleKeyboardNavigation = (e) => {
-        if (e.altKey) {
-            const keyMap = {
-                '1': 'home',
-                '2': 'about',
-                '3': 'projects',
-                '4': 'contact'
-            };
+        try {
+            const response = await fetch('https://api.github.com/users/lecelechavarre/repos?sort=updated&per_page=6');
             
-            const targetSection = keyMap[e.key];
-            if (targetSection) {
-                e.preventDefault();
-                navigateToSection(targetSection);
+            if (!response.ok) {
+                throw new Error('Failed to fetch repositories');
             }
+            
+            const repos = await response.json();
+            
+            if (repos.length === 0) {
+                projectsGrid.innerHTML = '<div class="loading">No public repositories found.</div>';
+                return;
+            }
+            
+            projectsGrid.innerHTML = repos.map(repo => `
+                <div class="project-card">
+                    <h3>${repo.name}</h3>
+                    <p>${repo.description || 'No description available.'}</p>
+                    <div class="project-meta">
+                        <span><i class="fas fa-star"></i> ${repo.stargazers_count}</span>
+                        <span><i class="fas fa-code-branch"></i> ${repo.forks_count}</span>
+                        <span><i class="fas fa-eye"></i> ${repo.watchers_count}</span>
+                    </div>
+                    <a href="${repo.html_url}" target="_blank" class="project-link">
+                        View on GitHub <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            `).join('');
+            
+        } catch (error) {
+            console.error('Error fetching GitHub repositories:', error);
+            projectsGrid.innerHTML = `
+                <div class="loading">
+                    <p>Unable to load projects. Please check your internet connection.</p>
+                    <a href="https://github.com/lecelechavarre" target="_blank" class="cta-button" style="margin-top: 1rem;">
+                        View on GitHub
+                    </a>
+                </div>
+            `;
         }
-    };
+    }
 
-    // Add keyboard navigation event listener
-    document.addEventListener('keydown', handleKeyboardNavigation);
+    // Fetch repositories when projects section is loaded
+    const projectsSection = document.getElementById('projects');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                fetchGitHubRepos();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
 
-    // ============================================
-    // Performance Optimization
-    // ============================================
-    
-    /**
-     * Debounce function for performance optimization
-     * @param {Function} func - The function to debounce
-     * @param {number} wait - The debounce delay in milliseconds
-     * @returns {Function} - The debounced function
-     */
-    const debounce = (func, wait) => {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    };
+    observer.observe(projectsSection);
 
-    // ============================================
-    // Console Message
-    // ============================================
-    
-    console.log('%c Portfolio Initialized Successfully! 🚀', 'color: #2563eb; font-size: 16px; font-weight: bold;');
-    console.log('%c Developed by Lecel Ann Harvey Echavarre', 'color: #10b981; font-size: 12px;');
-    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && 
+            !sidebar.contains(e.target) && 
+            !mobileMenuToggle.contains(e.target) &&
+            sidebar.classList.contains('active')) {
+            sidebar.classList.remove('active');
+        }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            sidebar.classList.remove('active');
+        }
+    });
 });
