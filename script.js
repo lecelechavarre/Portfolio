@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     // Theme toggle functionality
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
@@ -147,5 +147,28 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.innerWidth > 768) {
             sidebar.classList.remove('active');
         }
+    });
+
+    // Card flip functionality
+    const cards = document.querySelectorAll('.card');
+    
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+            this.classList.toggle('flipped');
+        });
+        
+        // For accessibility, allow flipping with Enter key
+        card.setAttribute('tabindex', '0');
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                this.classList.toggle('flipped');
+            }
+        });
+    });
+    
+    // Add animation delay for card entrance
+    const cardContainers = document.querySelectorAll('.card-container');
+    cardContainers.forEach((container, index) => {
+        container.style.animationDelay = `${index * 0.1}s`;
     });
 });
