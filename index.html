@@ -122,38 +122,26 @@
             justify-content: center;
         }
 
-        .hire-me-btn {
+        .social-icon {
             display: inline-flex;
             align-items: center;
-            padding: 0.5rem 1.2rem;
-            background: transparent;
-            border: 1px solid var(--primary-color);
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--card-bg);
+            border: 2px solid var(--primary-color);
             color: var(--text-color);
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .blink-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--secondary-color);
             border-radius: 50%;
-            margin-right: 8px;
-            animation: blink 2s infinite;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        .hire-me-btn:hover {
+        .social-icon:hover {
             background: var(--primary-color);
             color: white;
             transform: translateY(-2px);
+            box-shadow: 0 4px 8px var(--shadow-color);
         }
 
         .theme-toggle-btn {
@@ -504,8 +492,6 @@
 
         .main-divider {
             border: 0;
-            background: linear-gradient(to right, transparent, var(--text-color), transparent);
-            opacity: 0.2;
         }
 
         /* Home Section - Fixed Alignment */
@@ -863,9 +849,10 @@
         
         /* Plain text hero description - Condition 1 */
         .hero-description {
-            font-size: 1.15rem;
+            font-size: 1.20rem;
             line-height: 1.7;
-            margin-bottom: 3rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
             color: var(--paragraph-color);
             text-align: left;
         }
@@ -874,16 +861,15 @@
         .hero-additional-info {
             display: flex;
             flex-wrap: wrap;
-            margin-bottom: 3rem;
+            gap: 1.5rem;
+            margin-bottom: 5rem;
         }
 
         .info-item {
             display: flex;
             align-items: center;
-            padding: 1rem 1.5rem;
             border-radius: 12px;
             transition: all 0.3s ease;
-            min-width: 200px;
         }
 
         .info-item:hover {
@@ -1227,9 +1213,11 @@
             <div class="profile-name">Lecel Echavarre</div>
             <div class="profile-username">@lecelannharveyechavarre</div>
             <div class="profile-actions">
-                <a href="#contact" class="hire-me-btn">
-                    <span class="blink-dot"></span>
-                    Hire Me
+                <a href="https://github.com/lecelechavarre" target="_blank" class="social-icon" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/lecelechavarre" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
                 </a>
                 <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
                     <i class="fa-solid fa-cloud-moon"></i>
@@ -1255,7 +1243,7 @@
                 
                 <!-- Plain text hero description - Condition 1 -->
                 <div class="hero-description">
-                    I specialize in architecting and developing innovative digital solutions that drive business growth and operational efficiency. With expertise spanning full-stack development, system architecture, and emerging technologies, I transform complex challenges into scalable, high-performance applications. My approach combines technical precision with strategic thinking to deliver solutions that exceed expectations and create lasting value.
+                    Full-Stack Developer with experience in building and optimizing web, applications and automation platforms. Dedicated to creating scalable, secure, and high-quality software aligned with organizational objectives.
                 </div>
                 
                 <!-- Updated Additional Information Section with theme-based icon colors -->
