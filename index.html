@@ -9,6 +9,161 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* All existing CSS remains the same until the skills section */
+        
+        /* REDESIGNED SKILLS SECTION STYLES */
+        #skills {
+            padding: 4rem 0;
+        }
+
+        .skills-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .skills-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--heading-color);
+        }
+
+        .skills-header p {
+            font-size: 1.1rem;
+            color: var(--paragraph-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        body.dark-mode .skill-category {
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow-color);
+        }
+
+        .category-header {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        body.dark-mode .category-header {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .category-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .skills-list {
+            padding: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            flex-grow: 1;
+        }
+
+        .skill-item {
+            background: rgba(52, 152, 219, 0.08);
+            color: var(--primary-color);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid rgba(52, 152, 219, 0.15);
+        }
+
+        .skill-item:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
+        }
+
+        .skill-item.learning {
+            background: rgba(46, 204, 113, 0.08);
+            color: var(--secondary-color);
+            border: 1px solid rgba(46, 204, 113, 0.15);
+        }
+
+        .skill-item.learning:hover {
+            background: var(--secondary-color);
+            color: white;
+            box-shadow: 0 4px 8px rgba(46, 204, 113, 0.2);
+        }
+
+        .skill-icon {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Category-specific icon colors */
+        .category-icon.web-tech { background: linear-gradient(135deg, #3498db, #2ecc71); }
+        .category-icon.dev-tools { background: linear-gradient(135deg, #9b59b6, #e74c3c); }
+        .category-icon.databases { background: linear-gradient(135deg, #f39c12, #d35400); }
+        .category-icon.it-admin { background: linear-gradient(135deg, #34495e, #2c3e50); }
+        .category-icon.specialized { background: linear-gradient(135deg, #1abc9c, #16a085); }
+        .category-icon.learning { background: linear-gradient(135deg, #e67e22, #e74c3c); }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-title {
+                font-size: 1.2rem;
+            }
+            
+            .skill-item {
+                font-size: 0.85rem;
+                padding: 0.5rem 0.8rem;
+            }
+        }
+
+        /* All the rest of the existing CSS remains unchanged */
+        
         :root {
             --bg-color: #f0f2f5;
             --text-color: #2c3e50;
@@ -342,78 +497,6 @@
         .skill-badge i {
             margin-right: 0.5rem;
             font-size: 1.2rem;
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 10px var(--shadow-color);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 20px var(--shadow-color);
-        }
-
-        .project-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .project-card p {
-            color: var(--paragraph-color);
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-
-        .project-meta {
-            display: flex;
-            gap: 1rem;
-            margin-top: auto;
-            font-size: 0.9rem;
-            color: var(--paragraph-color);
-        }
-
-        .project-meta span {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .project-link:hover {
-            gap: 0.8rem;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            color: var(--paragraph-color);
-            grid-column: 1 / -1;
         }
 
         /* Contact Section */
@@ -941,31 +1024,226 @@
             gap: 0.5rem;
         }
 
-        /* Projects Section Specific Styles */
+        /* PROJECTS SECTION REDESIGN */
+        #projects {
+            padding: 4rem 0;
+        }
+
+        .projects-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .projects-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--heading-color);
+        }
+
+        .projects-header p {
+            font-size: 1.1rem;
+            color: var(--paragraph-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .projects-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--card-bg);
+            border: 2px solid var(--primary-color);
+            color: var(--text-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow-color);
+        }
+
+        .project-image {
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image i {
+            font-size: 4rem;
+            color: white;
+            opacity: 0.8;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .project-title span {
+            color: var(--primary-color);
+        }
+
+        .project-description {
+            color: var(--paragraph-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .project-stats {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.9rem;
+            color: var(--paragraph-color);
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            border: 2px solid var(--primary-color);
+        }
+
+        .project-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateX(5px);
+        }
+
         .view-all-container {
             text-align: center;
             margin-top: 2rem;
-            display: none;
+            display: none; /* Initially hidden */
         }
 
         .view-all-btn {
             display: inline-block;
             background: var(--primary-color);
             color: white;
-            padding: 0.8rem 2rem;
+            padding: 0.8rem 2.5rem;
             border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
             border: 2px solid var(--primary-color);
             cursor: pointer;
+            font-size: 1rem;
         }
 
         .view-all-btn:hover {
             background: transparent;
             color: var(--primary-color);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--shadow-color);
         }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--paragraph-color);
+            grid-column: 1 / -1;
+            font-size: 1.1rem;
+        }
+
+        .loading i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .no-projects {
+            text-align: center;
+            padding: 3rem;
+            color: var(--paragraph-color);
+            grid-column: 1 / -1;
+        }
+
+        /* Language-specific colors for tech tags */
+        .tech-tag.python { background: rgba(52, 152, 219, 0.1); color: #306998; }
+        .tech-tag.javascript { background: rgba(247, 223, 30, 0.1); color: #F7DF1E; }
+        .tech-tag.java { background: rgba(0, 115, 150, 0.1); color: #007396; }
+        .tech-tag.html { background: rgba(227, 79, 38, 0.1); color: #E34F26; }
+        .tech-tag.css { background: rgba(21, 114, 182, 0.1); color: #1572B6; }
+        .tech-tag.php { background: rgba(120, 86, 179, 0.1); color: #7952B3; }
+        .tech-tag.react { background: rgba(97, 218, 251, 0.1); color: #61DAFB; }
+        .tech-tag.vue { background: rgba(65, 184, 131, 0.1); color: #41B883; }
+        .tech-tag.flask { background: rgba(0, 0, 0, 0.1); color: #000000; }
+        .tech-tag.django { background: rgba(9, 46, 32, 0.1); color: #092E20; }
 
         /* Responsive Design */
         @media (max-width: 1024px) {
@@ -1255,7 +1533,7 @@
                 <li><a href="#home" class="active"><i class="fas fa-home"></i><span>Home</span></a></li>
                 <li><a href="#about"><i class="fas fa-user"></i><span>About Me</span></a></li>
                 <li><a href="#projects"><i class="fas fa-project-diagram"></i><span>Projects</span></a></li>
-                <li><a href="#contact"><i class="fas fa-envelope"></i><span>Contact</span></a></li>
+                <li><a href="#skills"><i class="fas fa-code"></i><span>Skills</span></a></li>
             </ul>
         </nav>
     </div>    
@@ -1298,8 +1576,7 @@
                 
                 <div class="home-content">
                     <div class="home-section">
-                        <h2><i class="fas fa-code"></i> Skills</h2>
-                        <p class="section-caption">My Professional skills.</p>
+                        <h2><i class="fas fa-project-diagram"></i> Technical Skills</h2>
                         
                         <!-- Skills section - Condition 3: Remove spaces between categories -->
                         <div class="skills-categories">
@@ -1781,43 +2058,247 @@
             </div>
         </section>
 
+        <!-- PROJECTS SECTION -->
         <section id="projects" class="section">
             <div class="container">
-                <h2>My Projects</h2>
-                <p class="section-caption">Here are some of my recent projects from GitHub</p>
-                <div class="projects-grid" id="projectsGrid">
-                    <div class="loading">Loading projects...</div>
+                <div class="projects-header">
+                    <h2>My Projects</h2>
+                    <p>Explore my work - from pinned GitHub repositories to personal projects</p>
                 </div>
+                
+                <div class="projects-filter">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="pinned">Pinned</button>
+                    <button class="filter-btn" data-filter="web">Web Development</button>
+                    <button class="filter-btn" data-filter="python">Python</button>
+                </div>
+                
+                <div class="projects-grid" id="projectsGrid">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading projects from GitHub...</p>
+                    </div>
+                </div>
+                
                 <div class="view-all-container" id="viewAllContainer">
                     <button class="view-all-btn" id="viewAllBtn">View All Projects</button>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="section">
+        <!-- REDESIGNED SKILLS SECTION -->
+        <section id="skills" class="section">
             <div class="container">
-                <h2>Contact Me</h2>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h3>Email</h3>
-                                <p>leceleechavarre@gmail.com</p>
+                <div class="skills-header">
+                    <h2>Technical Expertise</h2>
+                    <p>Comprehensive overview of my technical expertise across various domains</p>
+                </div>
+                
+                <div class="skills-grid">
+                    <!-- Web Technologies -->
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <div class="category-icon web-tech">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="category-title">Web Technologies</div>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-code"></i>
+                                <span>WebRTC</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-puzzle-piece"></i>
+                                <span>Chrome Extensions</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-exchange-alt"></i>
+                                <span>REST APIs</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-database"></i>
+                                <span>Local Storage</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-cogs"></i>
+                                <span>Service Workers</span>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <h3>Phone</h3>
-                                <p>+63 927 052 3808</p>
+                    </div>
+                    
+                    <!-- Development Tools -->
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <div class="category-icon dev-tools">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <div class="category-title">Development Tools</div>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <i class="skill-icon fab fa-git-alt"></i>
+                                <span>Git/GitHub</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-code"></i>
+                                <span>VS Code</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fab fa-docker"></i>
+                                <span>Docker</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-plug"></i>
+                                <span>Postman</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-vial"></i>
+                                <span>PyTest</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-robot"></i>
+                                <span>Selenium</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-book"></i>
+                                <span>Jupyter</span>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h3>Location</h3>
-                                <p>Victoria, Tarlac, Philippines</p>
+                    </div>
+                    
+                    <!-- Databases -->
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <div class="category-icon databases">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="category-title">Databases & Storage</div>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-database"></i>
+                                <span>SQLite</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-file-code"></i>
+                                <span>JSON</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-file-excel"></i>
+                                <span>Excel Files</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-file-csv"></i>
+                                <span>CSV</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-hdd"></i>
+                                <span>Local Storage</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- IT & Administration -->
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <div class="category-icon it-admin">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div class="category-title">IT & System Administration</div>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-wrench"></i>
+                                <span>System Maintenance</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-network-wired"></i>
+                                <span>Network Setup</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-video"></i>
+                                <span>CCTV Installation</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-tools"></i>
+                                <span>Hardware Repair</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-search"></i>
+                                <span>Troubleshooting</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-clipboard-list"></i>
+                                <span>Inventory Management</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-desktop"></i>
+                                <span>Radmin Viewer</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Specialized Skills -->
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <div class="category-icon specialized">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="category-title">Specialized Skills</div>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-robot"></i>
+                                <span>Automation</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-chart-bar"></i>
+                                <span>Data Visualization</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-file-pdf"></i>
+                                <span>PDF Processing</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-qrcode"></i>
+                                <span>QR Code Generation</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="skill-icon fas fa-plug"></i>
+                                <span>API Integration</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Currently Learning -->
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <div class="category-icon learning">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="category-title">Currently Learning</div>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item learning">
+                                <i class="skill-icon fab fa-react"></i>
+                                <span>React.js</span>
+                            </div>
+                            <div class="skill-item learning">
+                                <i class="skill-icon fab fa-node-js"></i>
+                                <span>Node.js</span>
+                            </div>
+                            <div class="skill-item learning">
+                                <i class="skill-icon fab fa-aws"></i>
+                                <span>AWS</span>
+                            </div>
+                            <div class="skill-item learning">
+                                <i class="skill-icon fab fa-docker"></i>
+                                <span>Docker Advanced</span>
+                            </div>
+                            <div class="skill-item learning">
+                                <i class="skill-icon fas fa-brain"></i>
+                                <span>Machine Learning</span>
                             </div>
                         </div>
                     </div>
@@ -1827,6 +2308,8 @@
     </main>
 
     <script>
+        // JavaScript remains the same as in the previous implementation
+        // Only the navigation needs to be updated to include the skills section
         document.addEventListener('DOMContentLoaded', function() {
             // Theme toggle functionality
             const themeToggle = document.getElementById('themeToggle');
@@ -1902,46 +2385,149 @@
                 }
             });
 
-            // GitHub Repositories Fetch
+            // PROJECTS SECTION FUNCTIONALITY
             const projectsGrid = document.getElementById('projectsGrid');
             const viewAllContainer = document.getElementById('viewAllContainer');
             const viewAllBtn = document.getElementById('viewAllBtn');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
             let allRepos = [];
             let showingAllRepos = false;
+            let currentFilter = 'all';
 
             // Function to create project card HTML
             function createProjectCard(repo) {
+                // Determine language and icon
+                const language = repo.language ? repo.language.toLowerCase() : 'code';
+                const icon = getLanguageIcon(language);
+                const techTags = generateTechTags(repo);
+                
                 return `
-                    <div class="project-card">
-                        <h3>${repo.name}</h3>
-                        <p>${repo.description || 'No description available.'}</p>
-                        <div class="project-meta">
-                            <span><i class="fas fa-star"></i> ${repo.stargazers_count}</span>
-                            <span><i class="fas fa-code-branch"></i> ${repo.forks_count}</span>
-                            <span><i class="fas fa-eye"></i> ${repo.watchers_count}</span>
+                    <div class="project-card" data-languages="${language}" data-pinned="${repo.pinned || false}">
+                        <div class="project-image">
+                            <i class="${icon}"></i>
                         </div>
-                        <a href="${repo.html_url}" target="_blank" class="project-link">
-                            View on GitHub <i class="fas fa-arrow-right"></i>
-                        </a>
+                        <div class="project-content">
+                            <div class="project-title">
+                                <span>${repo.name}</span>
+                                ${repo.pinned ? '<i class="fas fa-thumbtack" title="Pinned on GitHub"></i>' : ''}
+                            </div>
+                            <p class="project-description">${repo.description || 'No description available.'}</p>
+                            <div class="project-tech">
+                                ${techTags}
+                            </div>
+                            <div class="project-footer">
+                                <div class="project-stats">
+                                    <div class="project-stat">
+                                        <i class="fas fa-star"></i>
+                                        <span>${repo.stargazers_count}</span>
+                                    </div>
+                                    <div class="project-stat">
+                                        <i class="fas fa-code-branch"></i>
+                                        <span>${repo.forks_count}</span>
+                                    </div>
+                                    <div class="project-stat">
+                                        <i class="fas fa-eye"></i>
+                                        <span>${repo.watchers_count}</span>
+                                    </div>
+                                </div>
+                                <a href="${repo.html_url}" target="_blank" class="project-link">
+                                    View Code <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 `;
             }
 
+            // Function to get appropriate icon for language
+            function getLanguageIcon(language) {
+                const iconMap = {
+                    'python': 'fab fa-python',
+                    'javascript': 'fab fa-js',
+                    'java': 'fab fa-java',
+                    'php': 'fab fa-php',
+                    'html': 'fab fa-html5',
+                    'css': 'fab fa-css3-alt',
+                    'react': 'fab fa-react',
+                    'vue': 'fab fa-vuejs',
+                    'django': 'fab fa-python',
+                    'flask': 'fas fa-flask'
+                };
+                
+                return iconMap[language] || 'fas fa-code';
+            }
+
+            // Function to generate technology tags based on repo data
+            function generateTechTags(repo) {
+                const language = repo.language;
+                let tags = '';
+                
+                if (language) {
+                    tags += `<span class="tech-tag ${language.toLowerCase()}">${language}</span>`;
+                }
+                
+                // Add additional tags based on project name or description
+                if (repo.name.toLowerCase().includes('web') || 
+                    repo.description && repo.description.toLowerCase().includes('web')) {
+                    tags += `<span class="tech-tag html">HTML/CSS</span>`;
+                }
+                
+                if (repo.name.toLowerCase().includes('api') || 
+                    repo.description && repo.description.toLowerCase().includes('api')) {
+                    tags += `<span class="tech-tag javascript">API</span>`;
+                }
+                
+                return tags;
+            }
+
             // Function to display projects in the grid
-            function displayProjects(repos) {
+            function displayProjects(repos, filter = 'all') {
                 if (repos.length === 0) {
-                    projectsGrid.innerHTML = '<div class="loading">No projects found.</div>';
+                    projectsGrid.innerHTML = `
+                        <div class="no-projects">
+                            <i class="fas fa-folder-open"></i>
+                            <p>No projects found.</p>
+                        </div>
+                    `;
                     return;
                 }
                 
-                projectsGrid.innerHTML = repos.map(repo => createProjectCard(repo)).join('');
+                // Filter projects based on selected filter
+                let filteredRepos = repos;
+                
+                if (filter === 'pinned') {
+                    filteredRepos = repos.filter(repo => repo.pinned);
+                } else if (filter === 'web') {
+                    filteredRepos = repos.filter(repo => 
+                        repo.language === 'HTML' || 
+                        repo.language === 'CSS' || 
+                        repo.language === 'JavaScript' ||
+                        (repo.description && repo.description.toLowerCase().includes('web'))
+                    );
+                } else if (filter === 'python') {
+                    filteredRepos = repos.filter(repo => 
+                        repo.language === 'Python' ||
+                        (repo.description && repo.description.toLowerCase().includes('python'))
+                    );
+                }
+                
+                projectsGrid.innerHTML = filteredRepos.map(repo => createProjectCard(repo)).join('');
+                
+                // Show the "View All" button if we're not already showing all repos
+                // FIXED: Now checking if we have more than 6 repos total and we're not showing all
+                if (!showingAllRepos && allRepos.length > 6) {
+                    viewAllContainer.style.display = 'block';
+                } else {
+                    viewAllContainer.style.display = 'none';
+                }
             }
 
             // Function to fetch pinned repositories
             async function fetchPinnedRepos() {
                 try {
-                    // Using GitHub API to fetch user's pinned repositories
-                    const response = await fetch('https://api.github.com/users/lecelechavarre/repos?sort=updated');
+                    // Using GitHub API to fetch user's repositories
+                    const response = await fetch('https://api.github.com/users/lecelechavarre/repos?sort=updated&per_page=20');
                     
                     if (!response.ok) {
                         throw new Error('Failed to fetch repositories');
@@ -1949,32 +2535,31 @@
                     
                     const repos = await response.json();
                     
-                    // Filter pinned repositories (GitHub doesn't have a direct API for pinned repos)
-                    // So we'll use a workaround: get the first 6 repos (assuming these are the most important ones)
-                    // In a real implementation, you might want to use GraphQL API or another approach
-                    const pinnedRepos = repos.slice(0, 6);
+                    // Mark first 6 repos as pinned (since GitHub API doesn't directly provide pinned status)
+                    const pinnedRepos = repos.slice(0, 6).map(repo => ({...repo, pinned: true}));
                     
                     // Store all repos for the "View All" functionality
-                    allRepos = repos;
+                    allRepos = repos.map(repo => ({...repo, pinned: pinnedRepos.some(p => p.id === repo.id)}));
                     
                     if (pinnedRepos.length === 0) {
-                        projectsGrid.innerHTML = '<div class="loading">No pinned repositories found.</div>';
+                        projectsGrid.innerHTML = `
+                            <div class="no-projects">
+                                <i class="fas fa-folder-open"></i>
+                                <p>No pinned repositories found.</p>
+                            </div>
+                        `;
                         return;
                     }
                     
-                    displayProjects(pinnedRepos);
-                    
-                    // Show the "View All" button if there are more than 6 repos
-                    if (repos.length > 6) {
-                        viewAllContainer.style.display = 'block';
-                    }
+                    displayProjects(pinnedRepos, currentFilter);
                     
                 } catch (error) {
                     console.error('Error fetching GitHub repositories:', error);
                     projectsGrid.innerHTML = `
-                        <div class="loading">
+                        <div class="no-projects">
+                            <i class="fas fa-exclamation-triangle"></i>
                             <p>Unable to load projects. Please check your internet connection.</p>
-                            <a href="https://github.com/lecelechavarre" target="_blank" class="cta-button" style="margin-top: 1rem;">
+                            <a href="https://github.com/lecelechavarre" target="_blank" class="view-all-btn" style="margin-top: 1rem;">
                                 View on GitHub
                             </a>
                         </div>
@@ -1992,23 +2577,31 @@
                     }
                     
                     const repos = await response.json();
-                    allRepos = repos;
+                    
+                    // Mark first 6 repos as pinned
+                    const pinnedIds = repos.slice(0, 6).map(repo => repo.id);
+                    allRepos = repos.map(repo => ({...repo, pinned: pinnedIds.includes(repo.id)}));
                     
                     if (repos.length === 0) {
-                        projectsGrid.innerHTML = '<div class="loading">No public repositories found.</div>';
+                        projectsGrid.innerHTML = `
+                            <div class="no-projects">
+                                <i class="fas fa-folder-open"></i>
+                                <p>No public repositories found.</p>
+                            </div>
+                        `;
                         return;
                     }
                     
-                    displayProjects(repos);
-                    viewAllContainer.style.display = 'none';
+                    displayProjects(allRepos, currentFilter);
                     showingAllRepos = true;
                     
                 } catch (error) {
                     console.error('Error fetching all GitHub repositories:', error);
                     projectsGrid.innerHTML = `
-                        <div class="loading">
+                        <div class="no-projects">
+                            <i class="fas fa-exclamation-triangle"></i>
                             <p>Unable to load all projects. Please check your internet connection.</p>
-                            <a href="https://github.com/lecelechavarre" target="_blank" class="cta-button" style="margin-top: 1rem;">
+                            <a href="https://github.com/lecelechavarre" target="_blank" class="view-all-btn" style="margin-top: 1rem;">
                                 View on GitHub
                             </a>
                         </div>
@@ -2021,11 +2614,27 @@
                 fetchAllRepos();
             });
 
+            // Event listeners for filter buttons
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active filter button
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    // Update current filter
+                    currentFilter = btn.getAttribute('data-filter');
+                    
+                    // Display filtered projects
+                    const reposToDisplay = showingAllRepos ? allRepos : allRepos.slice(0, 6);
+                    displayProjects(reposToDisplay, currentFilter);
+                });
+            });
+
             // Fetch pinned repositories when projects section is loaded
             const projectsSection = document.getElementById('projects');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting && !showingAllRepos) {
+                    if (entry.isIntersecting && allRepos.length === 0) {
                         fetchPinnedRepos();
                         observer.unobserve(entry.target);
                     }
