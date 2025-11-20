@@ -9,133 +9,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        
-        /* SKILLS SECTION STYLES */
-        #skills {
-            padding: 4rem 0;
-        }
-
-        .skills-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .skills-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--heading-color);
-        }
-
-        .skills-header p {
-            font-size: 1.1rem;
-            color: var(--paragraph-color);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px var(--shadow-color);
-            transition: all 0.3s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px var(--shadow-color);
-        }
-
-        .card-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            padding: 1.5rem;
-            color: white;
-        }
-
-        .card-header h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
+        /* RESET AND BASE STYLES */
+        * {
             margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .card-header h3 i {
-            font-size: 1.1rem;
-        }
-
-        .skills-tags {
-            padding: 1.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            flex-grow: 1;
-        }
-
-        .tech-tag {
-            background: rgba(52, 152, 219, 0.1);
-            color: var(--primary-color);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(52, 152, 219, 0.2);
-        }
-
-        .tech-tag:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .tech-tag.learning {
-            background: rgba(46, 204, 113, 0.1);
-            color: var(--secondary-color);
-            border: 1px solid rgba(46, 204, 113, 0.2);
-        }
-
-        .tech-tag.learning:hover {
-            background: var(--secondary-color);
-            color: white;
-        }
-
-        /* Category-specific icon colors */
-        .card-header.web-tech { background: linear-gradient(135deg, #3498db, #2ecc71); }
-        .card-header.dev-tools { background: linear-gradient(135deg, #9b59b6, #e74c3c); }
-        .card-header.databases { background: linear-gradient(135deg, #f39c12, #d35400); }
-        .card-header.it-admin { background: linear-gradient(135deg, #34495e, #2c3e50); }
-        .card-header.specialized { background: linear-gradient(135deg, #1abc9c, #16a085); }
-        .card-header.learning { background: linear-gradient(135deg, #e67e22, #e74c3c); }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .card-header h3 {
-                font-size: 1.2rem;
-            }
-            
-            .tech-tag {
-                font-size: 0.85rem;
-                padding: 0.4rem 0.8rem;
-            }
-        }
-
-        
         :root {
             --bg-color: #f0f2f5;
             --text-color: #2c3e50;
@@ -147,7 +27,8 @@
             --heading-color: #6a747e;
             --primary-color: #3498db;
             --secondary-color: #2ecc71;
-            --icon-color: #2c3e50; /* Black in light mode */
+            --icon-color: #2c3e50;
+            --border-color: #e2e8f0;
         }
 
         body.dark-mode {
@@ -159,26 +40,35 @@
             --sidebar-bg: #2d2d2d;
             --shadow-color: rgba(0, 0, 0, 0.3);
             --heading-color: #ffffff;
-            --icon-color: #ffffff; /* White in dark mode */
+            --icon-color: #ffffff;
+            --border-color: #334155;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            min-height: 100vh;
             background-color: var(--bg-color);
             color: var(--text-color);
             transition: all 0.3s ease;
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Mobile Menu Toggle */
+        /* MAIN LAYOUT */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+            width: 100%;
+            position: relative;
+        }
+
+        /* SIDEBAR STYLES */
         .mobile-menu-toggle {
             display: none;
             position: fixed;
@@ -206,6 +96,7 @@
             z-index: 100;
             transition: transform 0.3s ease;
             overflow-y: auto;
+            box-shadow: 2px 0 10px var(--shadow-color);
         }
 
         .sidebar.active {
@@ -215,6 +106,15 @@
         .profile-pic {
             margin-bottom: 2rem;
             text-align: center;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto;
+            border: 4px solid var(--primary-color);
+            background: #ddd url('./images/profile.png') center/cover;
         }
 
         .profile-name {
@@ -230,15 +130,6 @@
             color: var(--primary-color);
             font-weight: 400;
             margin-bottom: 1.5rem;
-        }
-
-        .profile-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 0 auto;
-            border: 4px solid var(--primary-color);
-            background: #ddd url('./images/profile.png') center/cover;
         }
 
         .profile-actions {
@@ -326,23 +217,27 @@
             text-align: center;
         }
 
+        /* MAIN CONTENT */
         main {
             flex: 1;
             margin-left: 280px;
             padding: 2rem;
             background-color: var(--main-bg);
             min-height: 100vh;
+            width: calc(100% - 280px);
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1rem;
+            width: 100%;
         }
 
         .section {
             display: none;
             animation: fadeIn 0.5s ease;
+            width: 100%;
         }
 
         .section.active {
@@ -355,7 +250,7 @@
         }
 
         .section h1 {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 2.5rem);
             margin-bottom: 1rem;
             color: var(--heading-color);
             line-height: 1.2;
@@ -364,7 +259,7 @@
         }
 
         .section h2 {
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
             margin-bottom: 1.5rem;
             color: var(--heading-color);
             display: flex;
@@ -388,30 +283,164 @@
             text-align: left;
         }
 
-        /* Location Info */
-        .location-info {
+        /* HOME SECTION */
+        .hero-intro {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            text-align: left;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        
+        .hero-name {
+            font-size: clamp(2.5rem, 8vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--heading-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-name::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .hero-tagline {
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            font-weight: 500;
+            color: var(--text-color);
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-left: 1.5rem;
+        }
+
+        .hero-tagline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+        }
+        
+        .hero-description {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            line-height: 1.7;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            color: var(--paragraph-color);
+            text-align: left;
+        }
+
+        .hero-additional-info {
             display: flex;
             flex-wrap: wrap;
             gap: 1.5rem;
-            margin: 1rem 0 2rem 0;
-            color: var(--paragraph-color);
+            margin-bottom: 3rem;
         }
 
-        .location-group {
+        .info-item {
+            display: flex;
+            align-items: center;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--icon-color);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            background: transparent;
+        }
+
+        .info-text {
+            font-weight: 500;
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        .info-link {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s ease;
+        }
+
+        .info-link:hover {
+            color: var(--primary-color);
+        }
+
+        .main-divider {
+            border: 0;
+            height: 1px;
+            background: var(--border-color);
+            margin: 2rem 0;
+        }
+
+        .home-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .home-section {
+            margin-bottom: 3rem;
+        }
+
+        .home-section:last-child {
+            margin-bottom: 0;
+        }
+
+        /* SKILLS SCROLLING SECTION */
+        .skills-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-top: 2rem;
+        }
+        
+        .skills-category {
+            margin-bottom: 0;
+        }
+        
+        .category-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-color);
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .dot {
-            width: 6px;
-            height: 6px;
-            background-color: var(--paragraph-color);
-            border-radius: 50%;
-            opacity: 0.8;
-        }
-
-        /* Skills Section */
         .skills-container {
             position: relative;
             width: 100%;
@@ -471,47 +500,76 @@
             font-size: 1.2rem;
         }
 
-        /* Contact Section */
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
+        /* COLORFUL SKILL BADGES */
+        /* Skill Badge Background Colors */
+        .skill-badge:nth-child(1) { background: linear-gradient(135deg, #30699820, #FFD43B40); }
+        .skill-badge:nth-child(2) { background: linear-gradient(135deg, #F7DF1E20, #F7DF1E40); }
+        .skill-badge:nth-child(3) { background: linear-gradient(135deg, #00739620, #00739640); }
+        .skill-badge:nth-child(4) { background: linear-gradient(135deg, #7B68EE20, #7B68EE40); }
+        .skill-badge:nth-child(5) { background: linear-gradient(135deg, #E34F2620, #E34F2640); }
+        .skill-badge:nth-child(6) { background: linear-gradient(135deg, #1572B620, #1572B640); }
+        .skill-badge:nth-child(7) { background: linear-gradient(135deg, #00000020, #00000040); }
+        .skill-badge:nth-child(8) { background: linear-gradient(135deg, #00968820, #00968840); }
+        .skill-badge:nth-child(9) { background: linear-gradient(135deg, #092E2020, #092E2040); }
+        .skill-badge:nth-child(10) { background: linear-gradient(135deg, #EE4C2C20, #EE4C2C40); }
+        .skill-badge:nth-child(11) { background: linear-gradient(135deg, #61DAFB20, #61DAFB40); }
+        .skill-badge:nth-child(12) { background: linear-gradient(135deg, #4FC08D20, #4FC08D40); }
+        .skill-badge:nth-child(13) { background: linear-gradient(135deg, #FF2D2020, #FF2D2040); }
+        .skill-badge:nth-child(14) { background: linear-gradient(135deg, #7952B320, #7952B340); }
+        .skill-badge:nth-child(15) { background: linear-gradient(135deg, #06B6D420, #06B6D440); }
+        .skill-badge:nth-child(16) { background: linear-gradient(135deg, #0769AD20, #0769AD40); }
+        .skill-badge:nth-child(17) { background: linear-gradient(135deg, #65B14320, #65B14340); }
+        .skill-badge:nth-child(18) { background: linear-gradient(135deg, #4479A120, #4479A140); }
+        .skill-badge:nth-child(19) { background: linear-gradient(135deg, #47A24820, #47A24840); }
+        .skill-badge:nth-child(20) { background: linear-gradient(135deg, #001E3620, #001E3640); }
+        .skill-badge:nth-child(21) { background: linear-gradient(135deg, #2496ED20, #2496ED40); }
+        .skill-badge:nth-child(22) { background: linear-gradient(135deg, #F0503220, #F0503240); }
+        .skill-badge:nth-child(23) { background: linear-gradient(135deg, #18171720, #18171740); }
+        .skill-badge:nth-child(24) { background: linear-gradient(135deg, #FCC62420, #FCC62440); }
+        .skill-badge:nth-child(25) { background: linear-gradient(135deg, #E9543620, #E9543640); }
+        .skill-badge:nth-child(26) { background: linear-gradient(135deg, #007ACC20, #007ACC40); }
+        .skill-badge:nth-child(27) { background: linear-gradient(135deg, #00000020, #00000040); }
+        .skill-badge:nth-child(28) { background: linear-gradient(135deg, #00000020, #00000040); }
+        .skill-badge:nth-child(29) { background: linear-gradient(135deg, #F24E1E20, #F24E1E40); }
+        .skill-badge:nth-child(30) { background: linear-gradient(135deg, #CB383720, #CB383740); }
+        .skill-badge:nth-child(31) { background: linear-gradient(135deg, #41CD5220, #41CD5240); }
+        .skill-badge:nth-child(32) { background: linear-gradient(135deg, #5C3EE820, #5C3EE840); }
 
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
+        /* Skill Icon Colors */
+        .skill-badge:nth-child(1) i { color: #306998; }
+        .skill-badge:nth-child(2) i { color: #F7DF1E; }
+        .skill-badge:nth-child(3) i { color: #007396; }
+        .skill-badge:nth-child(4) i { color: #7B68EE; }
+        .skill-badge:nth-child(5) i { color: #E34F26; }
+        .skill-badge:nth-child(6) i { color: #1572B6; }
+        .skill-badge:nth-child(7) i { color: #000000; }
+        .skill-badge:nth-child(8) i { color: #009688; }
+        .skill-badge:nth-child(9) i { color: #092E20; }
+        .skill-badge:nth-child(10) i { color: #EE4C2C; }
+        .skill-badge:nth-child(11) i { color: #61DAFB; }
+        .skill-badge:nth-child(12) i { color: #4FC08D; }
+        .skill-badge:nth-child(13) i { color: #FF2D20; }
+        .skill-badge:nth-child(14) i { color: #7952B3; }
+        .skill-badge:nth-child(15) i { color: #06B6D4; }
+        .skill-badge:nth-child(16) i { color: #0769AD; }
+        .skill-badge:nth-child(17) i { color: #65B143; }
+        .skill-badge:nth-child(18) i { color: #4479A1; }
+        .skill-badge:nth-child(19) i { color: #47A248; }
+        .skill-badge:nth-child(20) i { color: #001E36; }
+        .skill-badge:nth-child(21) i { color: #2496ED; }
+        .skill-badge:nth-child(22) i { color: #F05032; }
+        .skill-badge:nth-child(23) i { color: #181717; }
+        .skill-badge:nth-child(24) i { color: #FCC624; }
+        .skill-badge:nth-child(25) i { color: #E95436; }
+        .skill-badge:nth-child(26) i { color: #007ACC; }
+        .skill-badge:nth-child(27) i { color: #000000; }
+        .skill-badge:nth-child(28) i { color: #000000; }
+        .skill-badge:nth-child(29) i { color: #F24E1E; }
+        .skill-badge:nth-child(30) i { color: #CB3837; }
+        .skill-badge:nth-child(31) i { color: #41CD52; }
+        .skill-badge:nth-child(32) i { color: #5C3EE8; }
 
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: var(--card-bg);
-            border-radius: 10px;
-            box-shadow: 0 2px 8px var(--shadow-color);
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px var(--shadow-color);
-        }
-
-        .contact-item i {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-top: 0.2rem;
-        }
-
-        .contact-item h3 {
-            margin-bottom: 0.5rem;
-            color: var(--heading-color);
-        }
-
-        /* CTA Box */
+        /* CTA BOX */
         .cta-box {
             background: var(--card-bg);
             padding: 2rem;
@@ -545,35 +603,7 @@
             transform: translateY(-2px);
         }
 
-        .main-divider {
-            border: 0;
-        }
-
-        /* Home Section - Fixed Alignment */
-        #home .container > p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--paragraph-color);
-            margin-bottom: 2rem;
-            max-width: 800px;
-            text-align: left;
-        }
-
-        .home-content {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .home-section {
-            margin-bottom: 3rem;
-        }
-
-        .home-section:last-child {
-            margin-bottom: 0;
-        }
-
-        /* About Section Styles */
+        /* ABOUT SECTION */
         .about-content {
             margin-top: 1rem;
         }
@@ -630,7 +660,14 @@
             position: relative;
             margin-bottom: 2.5rem;
             padding-left: 2rem;
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
         }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
 
         .timeline-item::before {
             content: '';
@@ -847,153 +884,18 @@
             font-weight: 500;
         }
 
-        /* Hero Section */
-        .hero-intro {
-            font-size: 1.1rem;
-            color: var(--primary-color);
-            font-weight: 500;
-            margin-bottom: 0.8rem;
-            text-align: left;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-        
-        .hero-name {
-            font-size: 3.2rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            color: var(--heading-color);
-            position: relative;
-            display: inline-block;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .hero-name::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-        
-        .hero-tagline {
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: var(--text-color);
-            margin-bottom: 2.5rem;
-            position: relative;
-            display: inline-block;
-            padding-left: 1.5rem;
-        }
-
-        .hero-tagline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 6px;
-            height: 6px;
-            background: var(--secondary-color);
-            border-radius: 50%;
-        }
-        
-        .hero-description {
-            font-size: 1.20rem;
-            line-height: 1.7;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-            color: var(--paragraph-color);
-            text-align: left;
-        }
-
-        .hero-additional-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-bottom: 5rem;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .info-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .info-icon {
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--icon-color);
-            font-size: 1.5rem;
-            flex-shrink: 0;
-            /* No background, no border - just the icon */
-            background: transparent;
-        }
-
-        .info-text {
-            font-weight: 500;
-            color: var(--text-color);
-            font-size: 0.95rem;
-        }
-
-        .info-link {
-            text-decoration: none;
-            color: inherit;
-            transition: color 0.2s ease;
-        }
-
-        .info-link:hover {
-            color: var(--primary-color);
-        }
-
-        /* Define border color variable */
-        :root {
-            --border-color: #e2e8f0;
-        }
-
-        body.dark-mode {
-            --border-color: #334155;
-        }
-
-        .skills-categories {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            margin-top: 2rem;
-        }
-        
-        .skills-category {
-            margin-bottom: 0;
-        }
-        
-        .category-header {
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-        }
-        
-        .category-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--text-color);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        /* PROJECTS SECTION REDESIGN */
+        /* PROJECTS SECTION */
         #projects {
             padding: 4rem 0;
         }
@@ -1043,7 +945,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
@@ -1157,7 +1059,7 @@
         .view-all-container {
             text-align: center;
             margin-top: 2rem;
-            display: none; /* Initially hidden */
+            display: none;
         }
 
         .view-all-btn {
@@ -1202,6 +1104,107 @@
             grid-column: 1 / -1;
         }
 
+        /* SKILLS SECTION */
+        #skills {
+            padding: 4rem 0;
+        }
+
+        .skills-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .skills-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--heading-color);
+        }
+
+        .skills-header p {
+            font-size: 1.1rem;
+            color: var(--paragraph-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow-color);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .card-header h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header h3 i {
+            font-size: 1.1rem;
+        }
+
+        .skills-tags {
+            padding: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            flex-grow: 1;
+        }
+
+        .tech-tag {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+
+        .tech-tag:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tech-tag.learning {
+            background: rgba(46, 204, 113, 0.1);
+            color: var(--secondary-color);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+        }
+
+        .tech-tag.learning:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+
         /* Language-specific colors for tech tags */
         .tech-tag.python { background: rgba(52, 152, 219, 0.1); color: #306998; }
         .tech-tag.javascript { background: rgba(247, 223, 30, 0.1); color: #F7DF1E; }
@@ -1214,13 +1217,32 @@
         .tech-tag.flask { background: rgba(0, 0, 0, 0.1); color: #000000; }
         .tech-tag.django { background: rgba(9, 46, 32, 0.1); color: #092E20; }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
+        /* Category-specific icon colors */
+        .card-header.web-tech { background: linear-gradient(135deg, #3498db, #2ecc71); }
+        .card-header.dev-tools { background: linear-gradient(135deg, #9b59b6, #e74c3c); }
+        .card-header.databases { background: linear-gradient(135deg, #f39c12, #d35400); }
+        .card-header.it-admin { background: linear-gradient(135deg, #34495e, #2c3e50); }
+        .card-header.specialized { background: linear-gradient(135deg, #1abc9c, #16a085); }
+        .card-header.learning { background: linear-gradient(135deg, #e67e22, #e74c3c); }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1200px) {
             .sidebar {
                 width: 250px;
             }
             main {
                 margin-left: 250px;
+                width: calc(100% - 250px);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
         }
 
@@ -1241,6 +1263,7 @@
             main {
                 margin-left: 0;
                 padding: 1rem;
+                width: 100%;
             }
             
             .section h1 {
@@ -1272,11 +1295,6 @@
                 width: 100%;
             }
             
-            .location-info {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
             .projects-grid {
                 grid-template-columns: 1fr;
             }
@@ -1297,6 +1315,10 @@
             .tech-components {
                 grid-template-columns: 1fr;
             }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 600px) {
@@ -1306,6 +1328,16 @@
             
             .timeline-item {
                 padding-left: 1.5rem;
+            }
+            
+            .projects-filter {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 100%;
+                max-width: 200px;
             }
         }
 
@@ -1370,108 +1402,35 @@
                 height: 42px;
                 font-size: 1.3rem;
             }
-        }
-
-        /* Animation for timeline entrance */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+            
+            .card-header h3 {
+                font-size: 1.2rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            .tech-tag {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.8rem;
             }
         }
 
-        .timeline-item {
-            animation: fadeInUp 0.6s ease forwards;
-            opacity: 0;
+        @media (max-width: 360px) {
+            .sidebar {
+                width: 100%;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skill-badge {
+                min-width: 100px;
+                padding: 0.4rem 0.8rem;
+            }
         }
-
-        .timeline-item:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .timeline-item:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .timeline-item:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .timeline-item:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-
-        /* Skill Badge Colors */
-        .skill-badge:nth-child(1) { background: linear-gradient(135deg, #30699820, #FFD43B40); }
-        .skill-badge:nth-child(2) { background: linear-gradient(135deg, #F7DF1E20, #F7DF1E40); }
-        .skill-badge:nth-child(3) { background: linear-gradient(135deg, #00739620, #00739640); }
-        .skill-badge:nth-child(4) { background: linear-gradient(135deg, #7B68EE20, #7B68EE40); }
-        .skill-badge:nth-child(5) { background: linear-gradient(135deg, #E34F2620, #E34F2640); }
-        .skill-badge:nth-child(6) { background: linear-gradient(135deg, #1572B620, #1572B640); }
-        .skill-badge:nth-child(7) { background: linear-gradient(135deg, #00000020, #00000040); }
-        .skill-badge:nth-child(8) { background: linear-gradient(135deg, #00968820, #00968840); }
-        .skill-badge:nth-child(9) { background: linear-gradient(135deg, #092E2020, #092E2040); }
-        .skill-badge:nth-child(10) { background: linear-gradient(135deg, #EE4C2C20, #EE4C2C40); }
-        .skill-badge:nth-child(11) { background: linear-gradient(135deg, #61DAFB20, #61DAFB40); }
-        .skill-badge:nth-child(12) { background: linear-gradient(135deg, #4FC08D20, #4FC08D40); }
-        .skill-badge:nth-child(13) { background: linear-gradient(135deg, #FF2D2020, #FF2D2040); }
-        .skill-badge:nth-child(14) { background: linear-gradient(135deg, #7952B320, #7952B340); }
-        .skill-badge:nth-child(15) { background: linear-gradient(135deg, #06B6D420, #06B6D440); }
-        .skill-badge:nth-child(16) { background: linear-gradient(135deg, #0769AD20, #0769AD40); }
-        .skill-badge:nth-child(17) { background: linear-gradient(135deg, #65B14320, #65B14340); }
-        .skill-badge:nth-child(18) { background: linear-gradient(135deg, #4479A120, #4479A140); }
-        .skill-badge:nth-child(19) { background: linear-gradient(135deg, #47A24820, #47A24840); }
-        .skill-badge:nth-child(20) { background: linear-gradient(135deg, #001E3620, #001E3640); }
-        .skill-badge:nth-child(21) { background: linear-gradient(135deg, #2496ED20, #2496ED40); }
-        .skill-badge:nth-child(22) { background: linear-gradient(135deg, #F0503220, #F0503240); }
-        .skill-badge:nth-child(23) { background: linear-gradient(135deg, #18171720, #18171740); }
-        .skill-badge:nth-child(24) { background: linear-gradient(135deg, #FCC62420, #FCC62440); }
-        .skill-badge:nth-child(25) { background: linear-gradient(135deg, #E9543620, #E9543640); }
-        .skill-badge:nth-child(26) { background: linear-gradient(135deg, #007ACC20, #007ACC40); }
-        .skill-badge:nth-child(27) { background: linear-gradient(135deg, #00000020, #00000040); }
-        .skill-badge:nth-child(28) { background: linear-gradient(135deg, #00000020, #00000040); }
-        .skill-badge:nth-child(29) { background: linear-gradient(135deg, #F24E1E20, #F24E1E40); }
-        .skill-badge:nth-child(30) { background: linear-gradient(135deg, #CB383720, #CB383740); }
-        .skill-badge:nth-child(31) { background: linear-gradient(135deg, #41CD5220, #41CD5240); }
-        .skill-badge:nth-child(32) { background: linear-gradient(135deg, #5C3EE820, #5C3EE840); }
-
-        /* Skill Icon Colors */
-        .skill-badge:nth-child(1) i { color: #306998; }
-        .skill-badge:nth-child(2) i { color: #F7DF1E; }
-        .skill-badge:nth-child(3) i { color: #007396; }
-        .skill-badge:nth-child(4) i { color: #7B68EE; }
-        .skill-badge:nth-child(5) i { color: #E34F26; }
-        .skill-badge:nth-child(6) i { color: #1572B6; }
-        .skill-badge:nth-child(7) i { color: #000000; }
-        .skill-badge:nth-child(8) i { color: #009688; }
-        .skill-badge:nth-child(9) i { color: #092E20; }
-        .skill-badge:nth-child(10) i { color: #EE4C2C; }
-        .skill-badge:nth-child(11) i { color: #61DAFB; }
-        .skill-badge:nth-child(12) i { color: #4FC08D; }
-        .skill-badge:nth-child(13) i { color: #FF2D20; }
-        .skill-badge:nth-child(14) i { color: #7952B3; }
-        .skill-badge:nth-child(15) i { color: #06B6D4; }
-        .skill-badge:nth-child(16) i { color: #0769AD; }
-        .skill-badge:nth-child(17) i { color: #65B143; }
-        .skill-badge:nth-child(18) i { color: #4479A1; }
-        .skill-badge:nth-child(19) i { color: #47A248; }
-        .skill-badge:nth-child(20) i { color: #001E36; }
-        .skill-badge:nth-child(21) i { color: #2496ED; }
-        .skill-badge:nth-child(22) i { color: #F05032; }
-        .skill-badge:nth-child(23) i { color: #181717; }
-        .skill-badge:nth-child(24) i { color: #FCC624; }
-        .skill-badge:nth-child(25) i { color: #E95436; }
-        .skill-badge:nth-child(26) i { color: #007ACC; }
-        .skill-badge:nth-child(27) i { color: #000000; }
-        .skill-badge:nth-child(28) i { color: #000000; }
-        .skill-badge:nth-child(29) i { color: #F24E1E; }
-        .skill-badge:nth-child(30) i { color: #CB3837; }
-        .skill-badge:nth-child(31) i { color: #41CD52; }
-        .skill-badge:nth-child(32) i { color: #5C3EE8; }
     </style>
 </head>
 <body>
@@ -1480,680 +1439,681 @@
         <i class="fas fa-bars"></i>
     </div>
 
-    <div class="sidebar">
-        <div class="profile-pic">
-            <div class="profile-image"></div>
-            <div class="profile-name">Lecel Echavarre</div>
-            <div class="profile-username">@lecelannharveyechavarre</div>
-            <div class="profile-actions">
-                <a href="https://github.com/lecelechavarre" target="_blank" class="social-icon" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/lecelechavarre" target="_blank" class="social-icon" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
-                    <i class="fa-solid fa-cloud-moon"></i>
-                </button>
+    <div class="app-container">
+        <div class="sidebar">
+            <div class="profile-pic">
+                <div class="profile-image"></div>
+                <div class="profile-name">Lecel Echavarre</div>
+                <div class="profile-username">@lecelannharveyechavarre</div>
+                <div class="profile-actions">
+                    <a href="https://github.com/lecelechavarre" target="_blank" class="social-icon" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/lecelechavarre" target="_blank" class="social-icon" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                        <i class="fa-solid fa-cloud-moon"></i>
+                    </button>
+                </div>
             </div>
-        </div>
-        <nav>            
-            <ul>
-                <li><a href="#home" class="active"><i class="fas fa-home"></i><span>Home</span></a></li>
-                <li><a href="#about"><i class="fas fa-user"></i><span>About Me</span></a></li>
-                <li><a href="#projects"><i class="fas fa-project-diagram"></i><span>Projects</span></a></li>
-                <li><a href="#skills"><i class="fas fa-code"></i><span>Skills</span></a></li>
-            </ul>
-        </nav>
-    </div>    
+            <nav>            
+                <ul>
+                    <li><a href="#home" class="active"><i class="fas fa-home"></i><span>Home</span></a></li>
+                    <li><a href="#about"><i class="fas fa-user"></i><span>About Me</span></a></li>
+                    <li><a href="#projects"><i class="fas fa-project-diagram"></i><span>Projects</span></a></li>
+                    <li><a href="#skills"><i class="fas fa-code"></i><span>Skills</span></a></li>
+                </ul>
+            </nav>
+        </div>    
 
-    <main>
-        <section id="home" class="section active">
-            <div class="container">
-                <!-- Enhanced Professional Hero Section -->
-                <div class="hero-intro">Hello, I'm</div>
-                <h1 class="hero-name">Lecel Ann Harvey Echavarre</h1>
-                
-                <!-- Plain text hero description - Condition 1 -->
-                <div class="hero-description">
-                    Full-Stack Developer with experience in building and optimizing web, applications and automation platforms. Dedicated to creating scalable, secure, and high-quality software aligned with organizational objectives.
-                </div>
-                
-                <!-- Updated Additional Information Section with theme-based icon colors -->
-                <div class="hero-additional-info">
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="info-text">Based in Clark, Pampanga</div>
+        <main>
+            <section id="home" class="section active">
+                <div class="container">
+                    <!-- Enhanced Professional Hero Section -->
+                    <div class="hero-intro">Hello, I'm</div>
+                    <h1 class="hero-name">Lecel Ann Harvey Echavarre</h1>
+                    
+                    <!-- Plain text hero description -->
+                    <div class="hero-description">
+                        Full-Stack Developer with experience in building and optimizing web, applications and automation platforms. Dedicated to creating scalable, secure, and high-quality software aligned with organizational objectives.
                     </div>
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fas fa-laptop"></i>
+                    
+                    <!-- Updated Additional Information Section with theme-based icon colors -->
+                    <div class="hero-additional-info">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-text">Based in Clark, Pampanga</div>
                         </div>
-                        <div class="info-text">Onsite/Remote</div>
-                    </div>
-                </div>
-                
-                <hr class="main-divider">
-                
-                <div class="home-content">
-                    <div class="home-section">
-                        <h2><i class="fas fa-project-diagram"></i> Technical Skills</h2>
-                        
-                        <!-- Skills section - Condition 3: Remove spaces between categories -->
-                        <div class="skills-categories">
-                            <!-- Programming Languages -->
-                            <div class="skills-category">
-                                <div class="category-header">
-                                    <div class="category-title">
-                                        <i class="fas fa-laptop-code"></i>
-                                        Programming Languages
-                                    </div>
-                                </div>
-                                <div class="skills-container">
-                                    <div class="skills-track left">
-                                        <div class="skills-scroll">
-                                            <div class="skill-badge">
-                                                <i class="fab fa-python"></i>
-                                                <span>Python</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-js"></i>
-                                                <span>JavaScript</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-java"></i>
-                                                <span>Java</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-php"></i>
-                                                <span>PHP</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-html5"></i>
-                                                <span>HTML</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-css3-alt"></i>
-                                                <span>CSS</span>
-                                            </div>
-                                            <!-- Duplicate for seamless scrolling -->
-                                            <div class="skill-badge">
-                                                <i class="fab fa-python"></i>
-                                                <span>Python</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-js"></i>
-                                                <span>JavaScript</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-java"></i>
-                                                <span>Java</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-php"></i>
-                                                <span>PHP</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-html5"></i>
-                                                <span>HTML</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-css3-alt"></i>
-                                                <span>CSS</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-laptop"></i>
                             </div>
-                            
-                            <!-- Frameworks & Libraries -->
-                            <div class="skills-category">
-                                <div class="category-header">
-                                    <div class="category-title">
-                                        <i class="fas fa-layer-group"></i>
-                                        Frameworks & Libraries
-                                    </div>
-                                </div>
-                                <div class="skills-container">
-                                    <div class="skills-track right">
-                                        <div class="skills-scroll">
-                                            <div class="skill-badge">
-                                                <i class="fas fa-flask"></i>
-                                                <span>Flask</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fas fa-bolt"></i>
-                                                <span>FastAPI</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-python"></i>
-                                                <span>Django</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fas fa-brain"></i>
-                                                <span>PyTorch</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-react"></i>
-                                                <span>React</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-vuejs"></i>
-                                                <span>Vue</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-laravel"></i>
-                                                <span>Laravel</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-bootstrap"></i>
-                                                <span>Bootstrap</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-css3-alt"></i>
-                                                <span>Tailwind</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-js"></i>
-                                                <span>jQuery</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-html5"></i>
-                                                <span>HTMX</span>
-                                            </div>
-                                            <!-- Duplicate for seamless scrolling -->
-                                            <div class="skill-badge">
-                                                <i class="fas fa-flask"></i>
-                                                <span>Flask</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fas fa-bolt"></i>
-                                                <span>FastAPI</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-python"></i>
-                                                <span>Django</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fas fa-brain"></i>
-                                                <span>PyTorch</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-react"></i>
-                                                <span>React</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-vuejs"></i>
-                                                <span>Vue</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-laravel"></i>
-                                                <span>Laravel</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-bootstrap"></i>
-                                                <span>Bootstrap</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-css3-alt"></i>
-                                                <span>Tailwind</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-js"></i>
-                                                <span>jQuery</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-html5"></i>
-                                                <span>HTMX</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Tools & Technologies -->
-                            <div class="skills-category">
-                                <div class="category-header">
-                                    <div class="category-title">
-                                        <i class="fas fa-tools"></i>
-                                        Tools & Technologies
-                                    </div>
-                                </div>
-                                <div class="skills-container">
-                                    <div class="skills-track left">
-                                        <div class="skills-scroll">
-                                            <div class="skill-badge">
-                                                <i class="fas fa-database"></i>
-                                                <span>MySQL</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fas fa-database"></i>
-                                                <span>MongoDB</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fas fa-database"></i>
-                                                <span>SQLite</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-docker"></i>
-                                                <span>Docker</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-git"></i>
-                                                <span>Git</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-github"></i>
-                                                <span>GitHub</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-linux"></i>
-                                                <span>Linux</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-ubuntu"></i>
-                                                <span>Ubuntu</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fas fa-code"></i>
-                                                <span>VS Code</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fas fa-code"></i>
-                                                <span>PyCharm</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fas fa-code"></i>
-                                                <span>Eclipse</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-figma"></i>
-                                                <span>Figma</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-npm"></i>
-                                                <span>NPM</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fas fa-window-restore"></i>
-                                                <span>Qt</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fas fa-eye"></i>
-                                                <span>OpenCV</span>
-                                            </div>
-                                            <!-- Duplicate for seamless scrolling -->
-                                            <div class="skill-badge">
-                                                <i class="fas fa-database"></i>
-                                                <span>MySQL</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fas fa-database"></i>
-                                                <span>MongoDB</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fas fa-database"></i>
-                                                <span>SQLite</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-docker"></i>
-                                                <span>Docker</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-git"></i>
-                                                <span>Git</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-github"></i>
-                                                <span>GitHub</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-linux"></i>
-                                                <span>Linux</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-ubuntu"></i>
-                                                <span>Ubuntu</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fas fa-code"></i>
-                                                <span>VS Code</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fas fa-code"></i>
-                                                <span>PyCharm</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fas fa-code"></i>
-                                                <span>Eclipse</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-figma"></i>
-                                                <span>Figma</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fab fa-npm"></i>
-                                                <span>NPM</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fas fa-window-restore"></i>
-                                                <span>Qt</span>
-                                            </div>
-                                            <div class="skill-badge">
-                                                <i class="fas fa-eye"></i>
-                                                <span>OpenCV</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="info-text">Onsite/Remote</div>
                         </div>
                     </div>
                     
                     <hr class="main-divider">
                     
-                    <div class="home-section">
-                        <h2><i class="fas fa-laptop-code"></i> Services</h2>
-                        <p class="section-caption">I offer reliable and customized web solutions, aiming to contribute to your company's growth by enhancing your online presence and delivering efficient, user-friendly digital experiences.</p>
-                        <div class="cta-box">
-                            <h3>Let's work together!</h3>
-                            <p>Feel free to reach out anytime—I'm always open to discussing new projects, ideas, or opportunities to collaborate.</p>
-                            <!-- Updated Contact Me button with mailto link -->
-                            <a href="mailto:lecelannharveyechavarre@gmail.com" class="cta-button">Contact me</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="section">
-            <div class="container">
-                <h2>About Me</h2>
-                <div class="about-content">
-                    <div class="about-intro">
-                        <p>I am a passionate developer with expertise in web technologies and software development. My journey in tech began with curiosity and has evolved into a career focused on creating impactful digital solutions.</p>
-                    </div>
-                    
-                    <!-- Professional Timeline Design -->
-                    <div class="timeline-container">
-                        <!-- Education Timeline -->
-                        <div class="timeline-section">
-                            <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <div class="home-content">
+                        <div class="home-section">
+                            <h2><i class="fas fa-project-diagram"></i> Technical Skills</h2>
                             
-                            <div class="timeline-item">
-                                <div class="timeline-header">
-                                    <div>
-                                        <div class="timeline-title">Bachelor of Science in Computer Science</div>
-                                        <div class="timeline-company">Tarlac State University</div>
+                            <!-- Skills section -->
+                            <div class="skills-categories">
+                                <!-- Programming Languages -->
+                                <div class="skills-category">
+                                    <div class="category-header">
+                                        <div class="category-title">
+                                            <i class="fas fa-laptop-code"></i>
+                                            Programming Languages
+                                        </div>
                                     </div>
-                                    <div class="timeline-date">Aug 2020 - Jul 2024</div>
+                                    <div class="skills-container">
+                                        <div class="skills-track left">
+                                            <div class="skills-scroll">
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-python"></i>
+                                                    <span>Python</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-js"></i>
+                                                    <span>JavaScript</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-java"></i>
+                                                    <span>Java</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-php"></i>
+                                                    <span>PHP</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-html5"></i>
+                                                    <span>HTML</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-css3-alt"></i>
+                                                    <span>CSS</span>
+                                                </div>
+                                                <!-- Duplicate for seamless scrolling -->
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-python"></i>
+                                                    <span>Python</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-js"></i>
+                                                    <span>JavaScript</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-java"></i>
+                                                    <span>Java</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-php"></i>
+                                                    <span>PHP</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-html5"></i>
+                                                    <span>HTML</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-css3-alt"></i>
+                                                    <span>CSS</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="timeline-content">
-                                    <div class="timeline-subtitle">Thesis Project</div>
-                                    <p class="thesis-title">Real-time Student Face-based Attendance System with Anti-Spoofing and Hand-Raising Detector using Facenet, SVM, and Haar</p>
-                                    
-                                    <!-- NEW CLEAN THESIS DESCRIPTION -->
-                                    <div class="thesis-description">
-                                        <div class="thesis-overview">
-                                            <p>An automated attendance system utilizing facial recognition technology for real-time student identification in educational environments.</p>
+                                
+                                <!-- Frameworks & Libraries -->
+                                <div class="skills-category">
+                                    <div class="category-header">
+                                        <div class="category-title">
+                                            <i class="fas fa-layer-group"></i>
+                                            Frameworks & Libraries
                                         </div>
-                                        
-                                        <div class="tech-components">
-                                            <div class="tech-component">
-                                                <h4><i class="fas fa-robot"></i> Facenet</h4>
-                                                <p>Deep learning architecture for accurate face feature extraction and representation.</p>
-                                            </div>
-                                            <div class="tech-component">
-                                                <h4><i class="fas fa-project-diagram"></i> SVM</h4>
-                                                <p>Support Vector Machine algorithm for efficient face classification and recognition.</p>
-                                            </div>
-                                            <div class="tech-component">
-                                                <h4><i class="fas fa-eye"></i> Haar Cascades</h4>
-                                                <p>Object detection framework for face and gesture recognition in real-time video streams.</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="thesis-features">
-                                            <div class="feature-item">
-                                                <div class="feature-icon">
-                                                    <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <div class="skills-container">
+                                        <div class="skills-track right">
+                                            <div class="skills-scroll">
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-flask"></i>
+                                                    <span>Flask</span>
                                                 </div>
-                                                <div class="feature-content">
-                                                    <h5>Anti-Spoofing Mechanism</h5>
-                                                    <p>Prevents fraudulent attendance attempts using photos or videos through liveness detection algorithms.</p>
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-bolt"></i>
+                                                    <span>FastAPI</span>
                                                 </div>
-                                            </div>
-                                            <div class="feature-item">
-                                                <div class="feature-icon">
-                                                    <i class="fas fa-hand-paper"></i>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-python"></i>
+                                                    <span>Django</span>
                                                 </div>
-                                                <div class="feature-content">
-                                                    <h5>Hand-Raising Detection</h5>
-                                                    <p>Identifies student participation through gesture recognition for interactive classroom monitoring.</p>
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-brain"></i>
+                                                    <span>PyTorch</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-react"></i>
+                                                    <span>React</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-vuejs"></i>
+                                                    <span>Vue</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-laravel"></i>
+                                                    <span>Laravel</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-bootstrap"></i>
+                                                    <span>Bootstrap</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-css3-alt"></i>
+                                                    <span>Tailwind</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-js"></i>
+                                                    <span>jQuery</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-html5"></i>
+                                                    <span>HTMX</span>
+                                                </div>
+                                                <!-- Duplicate for seamless scrolling -->
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-flask"></i>
+                                                    <span>Flask</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-bolt"></i>
+                                                    <span>FastAPI</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-python"></i>
+                                                    <span>Django</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-brain"></i>
+                                                    <span>PyTorch</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-react"></i>
+                                                    <span>React</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-vuejs"></i>
+                                                    <span>Vue</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-laravel"></i>
+                                                    <span>Laravel</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-bootstrap"></i>
+                                                    <span>Bootstrap</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-css3-alt"></i>
+                                                    <span>Tailwind</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-js"></i>
+                                                    <span>jQuery</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-html5"></i>
+                                                    <span>HTMX</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    <div class="timeline-subtitle">Certificates, Training and Seminars</div>
-                                    <div class="certificates-list">
-                                        <div class="certificate-badge">Cisco Certified Network Associate</div>
-                                        <div class="certificate-badge">Data Visualization Using Chart.js</div>
-                                        <div class="certificate-badge">Excel Techniques for Data Analysis</div>
+                                </div>
+                                
+                                <!-- Tools & Technologies -->
+                                <div class="skills-category">
+                                    <div class="category-header">
+                                        <div class="category-title">
+                                            <i class="fas fa-tools"></i>
+                                            Tools & Technologies
+                                        </div>
                                     </div>
-                                    
-                                    <div class="timeline-subtitle">Additional Experience</div>
-                                    <ul class="timeline-list">
-                                        <li>Practiced and enhanced coding skills through hands-on projects using PHP, HTML, CSS, JavaScript, and Python</li>
-                                        <li>Developed multiple small-scale applications and exercises to strengthen understanding of web development and programming logic</li>
-                                        <li>Created a practice project collection showcasing work in different programming languages, uploaded and maintained on GitHub</li>
-                                    </ul>
+                                    <div class="skills-container">
+                                        <div class="skills-track left">
+                                            <div class="skills-scroll">
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-database"></i>
+                                                    <span>MySQL</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-database"></i>
+                                                    <span>MongoDB</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-database"></i>
+                                                    <span>SQLite</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-docker"></i>
+                                                    <span>Docker</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-git"></i>
+                                                    <span>Git</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-github"></i>
+                                                    <span>GitHub</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-linux"></i>
+                                                    <span>Linux</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-ubuntu"></i>
+                                                    <span>Ubuntu</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-code"></i>
+                                                    <span>VS Code</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-code"></i>
+                                                    <span>PyCharm</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-code"></i>
+                                                    <span>Eclipse</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-figma"></i>
+                                                    <span>Figma</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-npm"></i>
+                                                    <span>NPM</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-window-restore"></i>
+                                                    <span>Qt</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-eye"></i>
+                                                    <span>OpenCV</span>
+                                                </div>
+                                                <!-- Duplicate for seamless scrolling -->
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-database"></i>
+                                                    <span>MySQL</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-database"></i>
+                                                    <span>MongoDB</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-database"></i>
+                                                    <span>SQLite</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-docker"></i>
+                                                    <span>Docker</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-git"></i>
+                                                    <span>Git</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-github"></i>
+                                                    <span>GitHub</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-linux"></i>
+                                                    <span>Linux</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-ubuntu"></i>
+                                                    <span>Ubuntu</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-code"></i>
+                                                    <span>VS Code</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-code"></i>
+                                                    <span>PyCharm</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-code"></i>
+                                                    <span>Eclipse</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-figma"></i>
+                                                    <span>Figma</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fab fa-npm"></i>
+                                                    <span>NPM</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-window-restore"></i>
+                                                    <span>Qt</span>
+                                                </div>
+                                                <div class="skill-badge">
+                                                    <i class="fas fa-eye"></i>
+                                                    <span>OpenCV</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Work Experience Timeline -->
-                        <div class="timeline-section">
-                            <h3><i class="fas fa-briefcase"></i> Work Experience</h3>
-                            
-                            <div class="timeline-item">
-                                <div class="timeline-header">
-                                    <div>
-                                        <div class="timeline-title">Information System Security Engineer</div>
-                                        <div class="timeline-company">Nanox Philippines, Inc.</div>
-                                    </div>
-                                    <div class="timeline-date">Jun 2025 - Present</div>
-                                </div>
-                                <div class="timeline-content">
-                                    
-                                    <div class="timeline-subtitle">IT Support & Infrastructure</div>
-                                    <ul class="timeline-list">
-                                        <li>Contributes to the development and enhancement of company applications, websites, and system tools to improve operations</li>
-                                        <li>Managed IT inventory and provided hardware/software troubleshooting across diverse environments, maintaining laptops with a 99% availability for critical systems</li>
-                                        <li>Enhanced operational reliability by monitoring internal web applications and collaborating with developers to resolve recurring errors</li>
-                                    </ul>
-                                    
-                                    <div class="timeline-subtitle">Training & Process Improvement</div>
-                                    <ul class="timeline-list">
-                                        <li>Developed and led internal training sessions on Office productivity, reducing repetitive inquiries and empowering end-users</li>
-                                        <li>Decreased average ticket resolution time by implementing standardized troubleshooting procedures and creating a knowledge base for common issues</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="timeline-item">
-                                <div class="timeline-header">
-                                    <div>
-                                        <div class="timeline-title">IT Assistant Officer</div>
-                                        <div class="timeline-company">RCS Eastern Intertrade Corp.</div>
-                                    </div>
-                                    <div class="timeline-date">Aug 2024 - Feb 2025</div>
-                                </div>
-                                <div class="timeline-content">
-                                    <ul class="timeline-list">
-                                        <li>Comprehensive understanding and experience in SAP B1 process: Beginning Inventory, Goods Receipts(GR), Stock Transfer and Goods Issues(GI)</li>
-                                        <li>Analyzed, identified and resolved technical issues from SAP B1 Inventory transactions to support system improvements</li>
-                                        <li>Skilled in utilizing MS Excel to track and process Beginning Inventory, Goods Receipts (GR), and Goods Issues (GI) for efficient inventory management</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="timeline-item">
-                                <div class="timeline-header">
-                                    <div>
-                                        <div class="timeline-title">Graphic Designer - OJT</div>
-                                        <div class="timeline-company">Trackerteer Web Developer Corporation</div>
-                                    </div>
-                                    <div class="timeline-date">Jun - Aug 2024</div>
-                                </div>
-                                <div class="timeline-content">
-                                    <ul class="timeline-list">
-                                        <li>Experienced in cutting and editing garments and models in Photoshop for product presentations and marketing materials</li>
-                                        <li>Skilled in utilizing Adobe Illustrator to design eye-catching posters and advertisements for print and digital platforms</li>
-                                        <li>Utilized Adobe Illustrator to create detailed sketches and determine the appropriate use of tools in both Photoshop and Illustrator for optimized design workflows</li>
-                                    </ul>
-                                </div>
+                        <hr class="main-divider">
+                        
+                        <div class="home-section">
+                            <h2><i class="fas fa-laptop-code"></i> Services</h2>
+                            <p class="section-caption">I offer reliable and customized web solutions, aiming to contribute to your company's growth by enhancing your online presence and delivering efficient, user-friendly digital experiences.</p>
+                            <div class="cta-box">
+                                <h3>Let's work together!</h3>
+                                <p>Feel free to reach out anytime—I'm always open to discussing new projects, ideas, or opportunities to collaborate.</p>
+                                <!-- Updated Contact Me button with mailto link -->
+                                <a href="mailto:lecelannharveyechavarre@gmail.com" class="cta-button">Contact me</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- PROJECTS SECTION -->
-        <section id="projects" class="section">
-            <div class="container">
-                <div class="projects-header">
-                    <h2>My Projects</h2>
-                    <p>Explore my work - from pinned GitHub repositories to personal projects</p>
-                </div>
-                
-                <div class="projects-filter">
-                    <button class="filter-btn active" data-filter="all">All Projects</button>
-                    <button class="filter-btn" data-filter="pinned">Pinned</button>
-                    <button class="filter-btn" data-filter="web">Web Development</button>
-                    <button class="filter-btn" data-filter="python">Python</button>
-                </div>
-                
-                <div class="projects-grid" id="projectsGrid">
-                    <div class="loading">
-                        <i class="fas fa-spinner fa-spin"></i>
-                        <p>Loading projects from GitHub...</p>
-                    </div>
-                </div>
-                
-                <div class="view-all-container" id="viewAllContainer">
-                    <button class="view-all-btn" id="viewAllBtn">View All Projects</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- NEW SKILLS SECTION -->
-        <section id="skills" class="section">
-            <div class="container">
-                <div class="skills-header">
-                    <h2>Technical Expertise</h2>
-                    <p>Comprehensive overview of my technical expertise across various domains</p>
-                </div>
-                
-                <div class="skills-grid">
-                    <!-- Web Technologies -->
-                    <div class="card">
-                        <div class="card-header web-tech">
-                            <h3><i class="fas fa-globe"></i> Web Technologies</h3>
+            <section id="about" class="section">
+                <div class="container">
+                    <h2>About Me</h2>
+                    <div class="about-content">
+                        <div class="about-intro">
+                            <p>I am a passionate developer with expertise in web technologies and software development. My journey in tech began with curiosity and has evolved into a career focused on creating impactful digital solutions.</p>
                         </div>
-                        <div class="skills-tags">
-                            <span class="tech-tag">WebRTC</span>
-                            <span class="tech-tag">Chrome Extensions</span>
-                            <span class="tech-tag">REST APIs</span>
-                            <span class="tech-tag">Local Storage</span>
-                            <span class="tech-tag">Service Workers</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Development Tools -->
-                    <div class="card">
-                        <div class="card-header dev-tools">
-                            <h3><i class="fas fa-tools"></i> Development Tools</h3>
-                        </div>
-                        <div class="skills-tags">
-                            <span class="tech-tag">Git/GitHub</span>
-                            <span class="tech-tag">VS Code</span>
-                            <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">Postman</span>
-                            <span class="tech-tag">PyTest</span>
-                            <span class="tech-tag">Selenium</span>
-                            <span class="tech-tag">Jupyter</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Databases -->
-                    <div class="card">
-                        <div class="card-header databases">
-                            <h3><i class="fas fa-database"></i> Databases & Storage</h3>
-                        </div>
-                        <div class="skills-tags">
-                            <span class="tech-tag">SQLite</span>
-                            <span class="tech-tag">JSON</span>
-                            <span class="tech-tag">Excel Files</span>
-                            <span class="tech-tag">CSV</span>
-                            <span class="tech-tag">Local Storage</span>
-                        </div>
-                    </div>
-                    
-                    <!-- IT & Administration -->
-                    <div class="card">
-                        <div class="card-header it-admin">
-                            <h3><i class="fas fa-server"></i> IT & System Administration</h3>
-                        </div>
-                        <div class="skills-tags">
-                            <span class="tech-tag">System Maintenance</span>
-                            <span class="tech-tag">Network Setup</span>
-                            <span class="tech-tag">CCTV Installation</span>
-                            <span class="tech-tag">Hardware Repair</span>
-                            <span class="tech-tag">Troubleshooting</span>
-                            <span class="tech-tag">Inventory Management</span>
-                            <span class="tech-tag">Radmin Viewer</span>
+                        
+                        <!-- Professional Timeline Design -->
+                        <div class="timeline-container">
+                            <!-- Education Timeline -->
+                            <div class="timeline-section">
+                                <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <div class="timeline-title">Bachelor of Science in Computer Science</div>
+                                            <div class="timeline-company">Tarlac State University</div>
+                                        </div>
+                                        <div class="timeline-date">Aug 2020 - Jul 2024</div>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-subtitle">Thesis Project</div>
+                                        <p class="thesis-title">Real-time Student Face-based Attendance System with Anti-Spoofing and Hand-Raising Detector using Facenet, SVM, and Haar</p>
+                                        
+                                        <!-- NEW CLEAN THESIS DESCRIPTION -->
+                                        <div class="thesis-description">
+                                            <div class="thesis-overview">
+                                                <p>An automated attendance system utilizing facial recognition technology for real-time student identification in educational environments.</p>
+                                            </div>
+                                            
+                                            <div class="tech-components">
+                                                <div class="tech-component">
+                                                    <h4><i class="fas fa-robot"></i> Facenet</h4>
+                                                    <p>Deep learning architecture for accurate face feature extraction and representation.</p>
+                                                </div>
+                                                <div class="tech-component">
+                                                    <h4><i class="fas fa-project-diagram"></i> SVM</h4>
+                                                    <p>Support Vector Machine algorithm for efficient face classification and recognition.</p>
+                                                </div>
+                                                <div class="tech-component">
+                                                    <h4><i class="fas fa-eye"></i> Haar Cascades</h4>
+                                                    <p>Object detection framework for face and gesture recognition in real-time video streams.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="thesis-features">
+                                                <div class="feature-item">
+                                                    <div class="feature-icon">
+                                                        <i class="fas fa-shield-alt"></i>
+                                                    </div>
+                                                    <div class="feature-content">
+                                                        <h5>Anti-Spoofing Mechanism</h5>
+                                                        <p>Prevents fraudulent attendance attempts using photos or videos through liveness detection algorithms.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="feature-item">
+                                                    <div class="feature-icon">
+                                                        <i class="fas fa-hand-paper"></i>
+                                                    </div>
+                                                    <div class="feature-content">
+                                                        <h5>Hand-Raising Detection</h5>
+                                                        <p>Identifies student participation through gesture recognition for interactive classroom monitoring.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="timeline-subtitle">Certificates, Training and Seminars</div>
+                                        <div class="certificates-list">
+                                            <div class="certificate-badge">Cisco Certified Network Associate</div>
+                                            <div class="certificate-badge">Data Visualization Using Chart.js</div>
+                                            <div class="certificate-badge">Excel Techniques for Data Analysis</div>
+                                        </div>
+                                        
+                                        <div class="timeline-subtitle">Additional Experience</div>
+                                        <ul class="timeline-list">
+                                            <li>Practiced and enhanced coding skills through hands-on projects using PHP, HTML, CSS, JavaScript, and Python</li>
+                                            <li>Developed multiple small-scale applications and exercises to strengthen understanding of web development and programming logic</li>
+                                            <li>Created a practice project collection showcasing work in different programming languages, uploaded and maintained on GitHub</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                    </div>
-
-                    <!-- Specialized Skills -->
-                    <div class="card">
-                        <div class="card-header specialized">
-                            <h3><i class="fas fa-star"></i> Specialized Skills</h3>
-                        </div>
-                        <div class="skills-tags">
-                            <span class="tech-tag">Automation</span>
-                            <span class="tech-tag">Data Visualization</span>
-                            <span class="tech-tag">PDF Processing</span>
-                            <span class="tech-tag">QR Code Generation</span>
-                            <span class="tech-tag">API Integration</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Currently Learning -->
-                    <div class="card">
-                        <div class="card-header learning">
-                            <h3><i class="fas fa-graduation-cap"></i> Currently Learning</h3>
-                        </div>
-                        <div class="skills-tags">
-                            <span class="tech-tag learning">React.js</span>
-                            <span class="tech-tag learning">Node.js</span>
-                            <span class="tech-tag learning">AWS</span>
-                            <span class="tech-tag learning">Docker Advanced</span>
-                            <span class="tech-tag learning">Machine Learning</span>
+                            
+                            <!-- Work Experience Timeline -->
+                            <div class="timeline-section">
+                                <h3><i class="fas fa-briefcase"></i> Work Experience</h3>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <div class="timeline-title">Information System Security Engineer</div>
+                                            <div class="timeline-company">Nanox Philippines, Inc.</div>
+                                        </div>
+                                        <div class="timeline-date">Jun 2025 - Present</div>
+                                    </div>
+                                    <div class="timeline-content">
+                                        
+                                        <div class="timeline-subtitle">IT Support & Infrastructure</div>
+                                        <ul class="timeline-list">
+                                            <li>Contributes to the development and enhancement of company applications, websites, and system tools to improve operations</li>
+                                            <li>Managed IT inventory and provided hardware/software troubleshooting across diverse environments, maintaining laptops with a 99% availability for critical systems</li>
+                                            <li>Enhanced operational reliability by monitoring internal web applications and collaborating with developers to resolve recurring errors</li>
+                                        </ul>
+                                        
+                                        <div class="timeline-subtitle">Training & Process Improvement</div>
+                                        <ul class="timeline-list">
+                                            <li>Developed and led internal training sessions on Office productivity, reducing repetitive inquiries and empowering end-users</li>
+                                            <li>Decreased average ticket resolution time by implementing standardized troubleshooting procedures and creating a knowledge base for common issues</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <div class="timeline-title">IT Assistant Officer</div>
+                                            <div class="timeline-company">RCS Eastern Intertrade Corp.</div>
+                                        </div>
+                                        <div class="timeline-date">Aug 2024 - Feb 2025</div>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <ul class="timeline-list">
+                                            <li>Comprehensive understanding and experience in SAP B1 process: Beginning Inventory, Goods Receipts(GR), Stock Transfer and Goods Issues(GI)</li>
+                                            <li>Analyzed, identified and resolved technical issues from SAP B1 Inventory transactions to support system improvements</li>
+                                            <li>Skilled in utilizing MS Excel to track and process Beginning Inventory, Goods Receipts (GR), and Goods Issues (GI) for efficient inventory management</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <div class="timeline-title">Graphic Designer - OJT</div>
+                                            <div class="timeline-company">Trackerteer Web Developer Corporation</div>
+                                        </div>
+                                        <div class="timeline-date">Jun - Aug 2024</div>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <ul class="timeline-list">
+                                            <li>Experienced in cutting and editing garments and models in Photoshop for product presentations and marketing materials</li>
+                                            <li>Skilled in utilizing Adobe Illustrator to design eye-catching posters and advertisements for print and digital platforms</li>
+                                            <li>Utilized Adobe Illustrator to create detailed sketches and determine the appropriate use of tools in both Photoshop and Illustrator for optimized design workflows</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
+
+            <!-- PROJECTS SECTION -->
+            <section id="projects" class="section">
+                <div class="container">
+                    <div class="projects-header">
+                        <h2>My Projects</h2>
+                        <p>Explore my work - from pinned GitHub repositories to personal projects</p>
+                    </div>
+                    
+                    <div class="projects-filter">
+                        <button class="filter-btn active" data-filter="all">All Projects</button>
+                        <button class="filter-btn" data-filter="pinned">Pinned</button>
+                        <button class="filter-btn" data-filter="web">Web Development</button>
+                        <button class="filter-btn" data-filter="python">Python</button>
+                    </div>
+                    
+                    <div class="projects-grid" id="projectsGrid">
+                        <div class="loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Loading projects from GitHub...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="view-all-container" id="viewAllContainer">
+                        <button class="view-all-btn" id="viewAllBtn">View All Projects</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SKILLS SECTION -->
+            <section id="skills" class="section">
+                <div class="container">
+                    <div class="skills-header">
+                        <h2>Technical Expertise</h2>
+                        <p>Comprehensive overview of my technical expertise across various domains</p>
+                    </div>
+                    
+                    <div class="skills-grid">
+                        <!-- Web Technologies -->
+                        <div class="card">
+                            <div class="card-header web-tech">
+                                <h3><i class="fas fa-globe"></i> Web Technologies</h3>
+                            </div>
+                            <div class="skills-tags">
+                                <span class="tech-tag">WebRTC</span>
+                                <span class="tech-tag">Chrome Extensions</span>
+                                <span class="tech-tag">REST APIs</span>
+                                <span class="tech-tag">Local Storage</span>
+                                <span class="tech-tag">Service Workers</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Development Tools -->
+                        <div class="card">
+                            <div class="card-header dev-tools">
+                                <h3><i class="fas fa-tools"></i> Development Tools</h3>
+                            </div>
+                            <div class="skills-tags">
+                                <span class="tech-tag">Git/GitHub</span>
+                                <span class="tech-tag">VS Code</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">Postman</span>
+                                <span class="tech-tag">PyTest</span>
+                                <span class="tech-tag">Selenium</span>
+                                <span class="tech-tag">Jupyter</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Databases -->
+                        <div class="card">
+                            <div class="card-header databases">
+                                <h3><i class="fas fa-database"></i> Databases & Storage</h3>
+                            </div>
+                            <div class="skills-tags">
+                                <span class="tech-tag">SQLite</span>
+                                <span class="tech-tag">JSON</span>
+                                <span class="tech-tag">Excel Files</span>
+                                <span class="tech-tag">CSV</span>
+                                <span class="tech-tag">Local Storage</span>
+                            </div>
+                        </div>
+                        
+                        <!-- IT & Administration -->
+                        <div class="card">
+                            <div class="card-header it-admin">
+                                <h3><i class="fas fa-server"></i> IT & System Administration</h3>
+                            </div>
+                            <div class="skills-tags">
+                                <span class="tech-tag">System Maintenance</span>
+                                <span class="tech-tag">Network Setup</span>
+                                <span class="tech-tag">CCTV Installation</span>
+                                <span class="tech-tag">Hardware Repair</span>
+                                <span class="tech-tag">Troubleshooting</span>
+                                <span class="tech-tag">Inventory Management</span>
+                                <span class="tech-tag">Radmin Viewer</span>
+                                </div>
+                        </div>
+
+                        <!-- Specialized Skills -->
+                        <div class="card">
+                            <div class="card-header specialized">
+                                <h3><i class="fas fa-star"></i> Specialized Skills</h3>
+                            </div>
+                            <div class="skills-tags">
+                                <span class="tech-tag">Automation</span>
+                                <span class="tech-tag">Data Visualization</span>
+                                <span class="tech-tag">PDF Processing</span>
+                                <span class="tech-tag">QR Code Generation</span>
+                                <span class="tech-tag">API Integration</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Currently Learning -->
+                        <div class="card">
+                            <div class="card-header learning">
+                                <h3><i class="fas fa-graduation-cap"></i> Currently Learning</h3>
+                            </div>
+                            <div class="skills-tags">
+                                <span class="tech-tag learning">React.js</span>
+                                <span class="tech-tag learning">Node.js</span>
+                                <span class="tech-tag learning">AWS</span>
+                                <span class="tech-tag learning">Docker Advanced</span>
+                                <span class="tech-tag learning">Machine Learning</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
 
     <script>
         // JavaScript remains the same as in the previous implementation
-        // Only the navigation needs to be updated to include the skills section
         document.addEventListener('DOMContentLoaded', function() {
             // Theme toggle functionality
             const themeToggle = document.getElementById('themeToggle');
@@ -2359,7 +2319,6 @@
                 projectsGrid.innerHTML = filteredRepos.map(repo => createProjectCard(repo)).join('');
                 
                 // Show the "View All" button if we're not already showing all repos
-                // FIXED: Now checking if we have more than 6 repos total and we're not showing all
                 if (!showingAllRepos && allRepos.length > 6) {
                     viewAllContainer.style.display = 'block';
                 } else {
@@ -2507,4 +2466,3 @@
     </script>
 </body>
 </html>
-
