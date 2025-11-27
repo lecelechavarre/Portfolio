@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* RESET AND BASE STYLES */
+      
         * {
             margin: 0;
             padding: 0;
@@ -918,6 +918,43 @@
             margin: 0 auto;
         }
 
+        /* NEW: Projects Statistics */
+        .projects-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            text-align: center;
+            min-width: 150px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--paragraph-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         .projects-filter {
             display: flex;
             justify-content: center;
@@ -1127,6 +1164,7 @@
             margin: 0 auto;
         }
 
+        /* NEW: Skills Grid Layout */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1134,7 +1172,7 @@
             margin-top: 2rem;
         }
 
-        .card {
+        .skill-category {
             background: var(--card-bg);
             border-radius: 15px;
             overflow: hidden;
@@ -1145,18 +1183,18 @@
             flex-direction: column;
         }
 
-        .card:hover {
+        .skill-category:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px var(--shadow-color);
         }
 
-        .card-header {
+        .skill-category-header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             padding: 1.5rem;
             color: white;
         }
 
-        .card-header h3 {
+        .skill-category-header h3 {
             font-size: 1.3rem;
             font-weight: 600;
             margin: 0;
@@ -1165,11 +1203,11 @@
             gap: 0.5rem;
         }
 
-        .card-header h3 i {
+        .skill-category-header h3 i {
             font-size: 1.1rem;
         }
 
-        .skills-tags {
+        .skill-items {
             padding: 1.5rem;
             display: flex;
             flex-wrap: wrap;
@@ -1177,7 +1215,7 @@
             flex-grow: 1;
         }
 
-        .tech-tag {
+        .skill-item {
             background: rgba(52, 152, 219, 0.1);
             color: var(--primary-color);
             padding: 0.5rem 1rem;
@@ -1188,42 +1226,30 @@
             border: 1px solid rgba(52, 152, 219, 0.2);
         }
 
-        .tech-tag:hover {
+        .skill-item:hover {
             background: var(--primary-color);
             color: white;
             transform: translateY(-2px);
         }
 
-        .tech-tag.learning {
+        .skill-item.learning {
             background: rgba(46, 204, 113, 0.1);
             color: var(--secondary-color);
             border: 1px solid rgba(46, 204, 113, 0.2);
         }
 
-        .tech-tag.learning:hover {
+        .skill-item.learning:hover {
             background: var(--secondary-color);
             color: white;
         }
 
-        /* Language-specific colors for tech tags */
-        .tech-tag.python { background: rgba(52, 152, 219, 0.1); color: #306998; }
-        .tech-tag.javascript { background: rgba(247, 223, 30, 0.1); color: #F7DF1E; }
-        .tech-tag.java { background: rgba(0, 115, 150, 0.1); color: #007396; }
-        .tech-tag.html { background: rgba(227, 79, 38, 0.1); color: #E34F26; }
-        .tech-tag.css { background: rgba(21, 114, 182, 0.1); color: #1572B6; }
-        .tech-tag.php { background: rgba(120, 86, 179, 0.1); color: #7952B3; }
-        .tech-tag.react { background: rgba(97, 218, 251, 0.1); color: #61DAFB; }
-        .tech-tag.vue { background: rgba(65, 184, 131, 0.1); color: #41B883; }
-        .tech-tag.flask { background: rgba(0, 0, 0, 0.1); color: #000000; }
-        .tech-tag.django { background: rgba(9, 46, 32, 0.1); color: #092E20; }
-
         /* Category-specific icon colors */
-        .card-header.web-tech { background: linear-gradient(135deg, #3498db, #2ecc71); }
-        .card-header.dev-tools { background: linear-gradient(135deg, #9b59b6, #e74c3c); }
-        .card-header.databases { background: linear-gradient(135deg, #f39c12, #d35400); }
-        .card-header.it-admin { background: linear-gradient(135deg, #34495e, #2c3e50); }
-        .card-header.specialized { background: linear-gradient(135deg, #1abc9c, #16a085); }
-        .card-header.learning { background: linear-gradient(135deg, #e67e22, #e74c3c); }
+        .skill-category-header.frameworks { background: linear-gradient(135deg, #3498db, #2ecc71); }
+        .skill-category-header.tools { background: linear-gradient(135deg, #9b59b6, #e74c3c); }
+        .skill-category-header.web-tech { background: linear-gradient(135deg, #f39c12, #d35400); }
+        .skill-category-header.dev-tools { background: linear-gradient(135deg, #34495e, #2c3e50); }
+        .skill-category-header.specialized { background: linear-gradient(135deg, #1abc9c, #16a085); }
+        .skill-category-header.learning { background: linear-gradient(135deg, #e67e22, #e74c3c); }
 
         /* RESPONSIVE DESIGN */
         @media (max-width: 1200px) {
@@ -1403,11 +1429,11 @@
                 font-size: 1.3rem;
             }
             
-            .card-header h3 {
+            .skill-category-header h3 {
                 font-size: 1.2rem;
             }
             
-            .tech-tag {
+            .skill-item {
                 font-size: 0.85rem;
                 padding: 0.4rem 0.8rem;
             }
@@ -1990,6 +2016,22 @@
                         <p>Explore my work - from pinned GitHub repositories to personal projects</p>
                     </div>
                     
+                    <!-- NEW: Projects Statistics -->
+                    <div class="projects-stats">
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalProjects">0</div>
+                            <div class="stat-label">Total Projects</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalStars">0</div>
+                            <div class="stat-label">Total Stars</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="pinnedProjects">0</div>
+                            <div class="stat-label">Pinned Projects</div>
+                        </div>
+                    </div>
+                    
                     <div class="projects-filter">
                         <button class="filter-btn active" data-filter="all">All Projects</button>
                         <button class="filter-btn" data-filter="pinned">Pinned</button>
@@ -2018,92 +2060,107 @@
                         <p>Comprehensive overview of my technical expertise across various domains</p>
                     </div>
                     
+                    <!-- NEW: Skills Grid Layout - Programming Languages Removed -->
                     <div class="skills-grid">
+                        <!-- Frameworks & Libraries -->
+                        <div class="skill-category">
+                            <div class="skill-category-header frameworks">
+                                <h3><i class="fas fa-layer-group"></i> Frameworks & Libraries</h3>
+                            </div>
+                            <div class="skill-items">
+                                <span class="skill-item">Flask</span>
+                                <span class="skill-item">FastAPI</span>
+                                <span class="skill-item">Django</span>
+                                <span class="skill-item">PyTorch</span>
+                                <span class="skill-item">React</span>
+                                <span class="skill-item">Vue</span>
+                                <span class="skill-item">Laravel</span>
+                                <span class="skill-item">Bootstrap</span>
+                                <span class="skill-item">Tailwind</span>
+                                <span class="skill-item">jQuery</span>
+                                <span class="skill-item">HTMX</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Tools & Technologies -->
+                        <div class="skill-category">
+                            <div class="skill-category-header tools">
+                                <h3><i class="fas fa-tools"></i> Tools & Technologies</h3>
+                            </div>
+                            <div class="skill-items">
+                                <span class="skill-item">MySQL</span>
+                                <span class="skill-item">MongoDB</span>
+                                <span class="skill-item">SQLite</span>
+                                <span class="skill-item">Docker</span>
+                                <span class="skill-item">Git</span>
+                                <span class="skill-item">GitHub</span>
+                                <span class="skill-item">Linux</span>
+                                <span class="skill-item">Ubuntu</span>
+                                <span class="skill-item">VS Code</span>
+                                <span class="skill-item">PyCharm</span>
+                                <span class="skill-item">Eclipse</span>
+                                <span class="skill-item">Figma</span>
+                                <span class="skill-item">NPM</span>
+                                <span class="skill-item">Qt</span>
+                                <span class="skill-item">OpenCV</span>
+                            </div>
+                        </div>
+                        
                         <!-- Web Technologies -->
-                        <div class="card">
-                            <div class="card-header web-tech">
+                        <div class="skill-category">
+                            <div class="skill-category-header web-tech">
                                 <h3><i class="fas fa-globe"></i> Web Technologies</h3>
                             </div>
-                            <div class="skills-tags">
-                                <span class="tech-tag">WebRTC</span>
-                                <span class="tech-tag">Chrome Extensions</span>
-                                <span class="tech-tag">REST APIs</span>
-                                <span class="tech-tag">Local Storage</span>
-                                <span class="tech-tag">Service Workers</span>
+                            <div class="skill-items">
+                                <span class="skill-item">WebRTC</span>
+                                <span class="skill-item">Chrome Extensions</span>
+                                <span class="skill-item">REST APIs</span>
+                                <span class="skill-item">Local Storage</span>
+                                <span class="skill-item">Service Workers</span>
                             </div>
                         </div>
                         
                         <!-- Development Tools -->
-                        <div class="card">
-                            <div class="card-header dev-tools">
-                                <h3><i class="fas fa-tools"></i> Development Tools</h3>
+                        <div class="skill-category">
+                            <div class="skill-category-header dev-tools">
+                                <h3><i class="fas fa-server"></i> Development Tools</h3>
                             </div>
-                            <div class="skills-tags">
-                                <span class="tech-tag">Git/GitHub</span>
-                                <span class="tech-tag">VS Code</span>
-                                <span class="tech-tag">Docker</span>
-                                <span class="tech-tag">Postman</span>
-                                <span class="tech-tag">PyTest</span>
-                                <span class="tech-tag">Selenium</span>
-                                <span class="tech-tag">Jupyter</span>
+                            <div class="skill-items">
+                                <span class="skill-item">Git/GitHub</span>
+                                <span class="skill-item">VS Code</span>
+                                <span class="skill-item">Docker</span>
+                                <span class="skill-item">Postman</span>
+                                <span class="skill-item">PyTest</span>
+                                <span class="skill-item">Selenium</span>
+                                <span class="skill-item">Jupyter</span>
                             </div>
-                        </div>
-                        
-                        <!-- Databases -->
-                        <div class="card">
-                            <div class="card-header databases">
-                                <h3><i class="fas fa-database"></i> Databases & Storage</h3>
-                            </div>
-                            <div class="skills-tags">
-                                <span class="tech-tag">SQLite</span>
-                                <span class="tech-tag">JSON</span>
-                                <span class="tech-tag">Excel Files</span>
-                                <span class="tech-tag">CSV</span>
-                                <span class="tech-tag">Local Storage</span>
-                            </div>
-                        </div>
-                        
-                        <!-- IT & Administration -->
-                        <div class="card">
-                            <div class="card-header it-admin">
-                                <h3><i class="fas fa-server"></i> IT & System Administration</h3>
-                            </div>
-                            <div class="skills-tags">
-                                <span class="tech-tag">System Maintenance</span>
-                                <span class="tech-tag">Network Setup</span>
-                                <span class="tech-tag">CCTV Installation</span>
-                                <span class="tech-tag">Hardware Repair</span>
-                                <span class="tech-tag">Troubleshooting</span>
-                                <span class="tech-tag">Inventory Management</span>
-                                <span class="tech-tag">Radmin Viewer</span>
-                                </div>
                         </div>
 
                         <!-- Specialized Skills -->
-                        <div class="card">
-                            <div class="card-header specialized">
+                        <div class="skill-category">
+                            <div class="skill-category-header specialized">
                                 <h3><i class="fas fa-star"></i> Specialized Skills</h3>
                             </div>
-                            <div class="skills-tags">
-                                <span class="tech-tag">Automation</span>
-                                <span class="tech-tag">Data Visualization</span>
-                                <span class="tech-tag">PDF Processing</span>
-                                <span class="tech-tag">QR Code Generation</span>
-                                <span class="tech-tag">API Integration</span>
+                            <div class="skill-items">
+                                <span class="skill-item">Automation</span>
+                                <span class="skill-item">Data Visualization</span>
+                                <span class="skill-item">PDF Processing</span>
+                                <span class="skill-item">QR Code Generation</span>
+                                <span class="skill-item">API Integration</span>
                             </div>
                         </div>
                         
                         <!-- Currently Learning -->
-                        <div class="card">
-                            <div class="card-header learning">
+                        <div class="skill-category">
+                            <div class="skill-category-header learning">
                                 <h3><i class="fas fa-graduation-cap"></i> Currently Learning</h3>
                             </div>
-                            <div class="skills-tags">
-                                <span class="tech-tag learning">React.js</span>
-                                <span class="tech-tag learning">Node.js</span>
-                                <span class="tech-tag learning">AWS</span>
-                                <span class="tech-tag learning">Docker Advanced</span>
-                                <span class="tech-tag learning">Machine Learning</span>
+                            <div class="skill-items">
+                                <span class="skill-item learning">React.js</span>
+                                <span class="skill-item learning">Node.js</span>
+                                <span class="skill-item learning">AWS</span>
+                                <span class="skill-item learning">Docker Advanced</span>
+                                <span class="skill-item learning">Machine Learning</span>
                             </div>
                         </div>
                     </div>
@@ -2113,7 +2170,6 @@
     </div>
 
     <script>
-        // JavaScript remains the same as in the previous implementation
         document.addEventListener('DOMContentLoaded', function() {
             // Theme toggle functionality
             const themeToggle = document.getElementById('themeToggle');
@@ -2194,6 +2250,11 @@
             const viewAllContainer = document.getElementById('viewAllContainer');
             const viewAllBtn = document.getElementById('viewAllBtn');
             const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            // NEW: Statistics elements
+            const totalProjectsEl = document.getElementById('totalProjects');
+            const totalStarsEl = document.getElementById('totalStars');
+            const pinnedProjectsEl = document.getElementById('pinnedProjects');
             
             let allRepos = [];
             let showingAllRepos = false;
@@ -2285,6 +2346,17 @@
                 return tags;
             }
 
+            // NEW: Function to update project statistics
+            function updateProjectStats(repos) {
+                const totalProjects = repos.length;
+                const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+                const pinnedProjects = repos.filter(repo => repo.pinned).length;
+                
+                totalProjectsEl.textContent = totalProjects;
+                totalStarsEl.textContent = totalStars;
+                pinnedProjectsEl.textContent = pinnedProjects;
+            }
+
             // Function to display projects in the grid
             function displayProjects(repos, filter = 'all') {
                 if (repos.length === 0) {
@@ -2344,6 +2416,9 @@
                     // Store all repos for the "View All" functionality
                     allRepos = repos.map(repo => ({...repo, pinned: pinnedRepos.some(p => p.id === repo.id)}));
                     
+                    // NEW: Update project statistics
+                    updateProjectStats(allRepos);
+                    
                     if (pinnedRepos.length === 0) {
                         projectsGrid.innerHTML = `
                             <div class="no-projects">
@@ -2384,6 +2459,9 @@
                     // Mark first 6 repos as pinned
                     const pinnedIds = repos.slice(0, 6).map(repo => repo.id);
                     allRepos = repos.map(repo => ({...repo, pinned: pinnedIds.includes(repo.id)}));
+                    
+                    // NEW: Update project statistics
+                    updateProjectStats(allRepos);
                     
                     if (repos.length === 0) {
                         projectsGrid.innerHTML = `
@@ -2465,4 +2543,4 @@
         });
     </script>
 </body>
-</html>
+</html> 
