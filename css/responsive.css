@@ -26,6 +26,11 @@ main {
     margin-top: 0.5rem;
 }
 
+/* Skills Logo Grid for Mobile */
+.logos-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
 /* Small Tablets and Large Phones (≥ 576px) */
 @media (min-width: 576px) {
     body {
@@ -61,13 +66,21 @@ main {
         box-shadow: 0 12px 40px var(--glass-shadow);
     }
     
-    .skills-scroll {
-        gap: 1rem;
+    .logos-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
     
-    .skill-badge {
-        min-width: 120px;
-        padding: 0.7rem 1.2rem;
+    .logo-item {
+        min-height: 130px;
+    }
+    
+    .logo-item img {
+        width: 52px;
+        height: 52px;
+    }
+    
+    .logo-item i {
+        font-size: 2.8rem;
     }
     
     .tech-components {
@@ -142,8 +155,8 @@ main {
         flex: 1;
     }
     
-    .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    .logos-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
     
     .timeline-header {
@@ -201,7 +214,6 @@ main {
 }
 
 /* Large Tablets and Small Desktops (≥ 992px) */
-/* Large Tablets and Small Desktops (≥ 992px) */
 @media (min-width: 992px) {
     .container {
         max-width: 960px;
@@ -212,29 +224,26 @@ main {
         padding: 2.5rem;
     }
     
-    .skills-categories {
-        gap: 2rem;
+    .logos-grid {
+        grid-template-columns: repeat(5, 1fr);
     }
     
-    .skills-category {
-        margin-bottom: 2rem;
+    .logo-item {
+        min-height: 140px;
+        padding: 1.2rem;
     }
     
-    .category-title {
-        font-size: 1.3rem;
+    .logo-item img {
+        width: 56px;
+        height: 56px;
     }
     
-    .skill-badge {
-        min-width: 130px;
-        padding: 0.8rem 1.5rem;
+    .logo-item i {
+        font-size: 3rem;
     }
     
-    .skill-badge i {
-        font-size: 1.2rem;
-    }
-    
-    .skill-badge span {
-        font-size: 1rem;
+    .logo-item span {
+        font-size: 0.9rem;
     }
     
     .projects-grid {
@@ -246,21 +255,6 @@ main {
         transform: translateY(-8px);
     }
     
-    .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 2rem;
-    }
-    
-    .skill-category-header h3 {
-        font-size: 1.2rem;
-    }
-    
-    .skill-item {
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-    }
-    
-    /* Removed the two-column timeline layout */
     .timeline-container {
         flex-direction: column;
         gap: 3rem;
@@ -304,8 +298,8 @@ main {
         max-width: 800px;
     }
     
-    .skills-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .logos-grid {
+        grid-template-columns: repeat(6, 1fr);
     }
     
     .projects-grid {
@@ -349,9 +343,8 @@ main {
         max-width: 1320px;
     }
     
-    .skills-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2.5rem;
+    .logos-grid {
+        grid-template-columns: repeat(7, 1fr);
     }
     
     .projects-grid {
@@ -365,6 +358,7 @@ main {
 
 /* Touch Device Optimizations */
 @media (hover: none) and (pointer: coarse) {
+    .logo-item:hover,
     .skill-badge:hover,
     .project-card:hover,
     .skill-item:hover,
@@ -376,6 +370,7 @@ main {
         transform: none;
     }
     
+    .logo-item:active,
     .skill-badge:active,
     .project-card:active,
     .skill-item:active {
@@ -403,6 +398,10 @@ main {
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .profile-image {
         border-width: 3px;
+    }
+    
+    .logo-item {
+        box-shadow: 0 2px 6px var(--shadow-color);
     }
     
     .skill-badge {
@@ -442,6 +441,7 @@ main {
         page-break-inside: avoid;
     }
     
+    .logo-item,
     .skill-badge,
     .project-card,
     .skill-category {
