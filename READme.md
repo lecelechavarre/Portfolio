@@ -5,18 +5,6 @@ Welcome to the "Dev" repository — a personal collection of development experim
 
 ---
 
-## Table of contents
-
-- [About](#about)
-- [Repository structure](#repository-structure)
-- [Getting started](#getting-started)
-- [Common workflows](#common-workflows)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
----
-
 ## About
 
 This repository is intentionally flexible — it hosts many small projects and experiments rather than a single monolithic application. Expect multiple languages, small utilities, and example code intended for learning, demonstration, or reuse.
@@ -26,21 +14,6 @@ Use this repo to:
 - Share utilities and scripts
 - Keep small prototypes and proofs-of-concept
 - Demonstrate approaches to problems or algorithms
-
----
-
-## Repository structure
-
-Top-level directories typically include (but are not limited to):
-
-- `projects/` — standalone small projects or demos (each project in its own subfolder)
-- `scripts/` — useful scripts and utilities (shell, Python, Node, etc.)
-- `libs/` — small libraries or reusable modules
-- `docs/` — documentation, notes, design sketches
-- `examples/` — short runnable examples and minimal reproducible cases
-- `tools/` — development helpers and config (linters, formatters, CI snippets)
-
-Note: The exact layout may change as experiments are added or reorganized.
 
 ---
 
