@@ -630,6 +630,7 @@ main {
 }
 
 /* TIMELINE DESIGN */
+/* TIMELINE DESIGN - Single Column Layout */
 .timeline-container {
     display: flex;
     flex-direction: column;
