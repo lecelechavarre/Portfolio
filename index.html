@@ -85,10 +85,15 @@
                     
                     <div class="home-content">
                         <div class="home-section">
-                            <h2><i class="fas fa-project-diagram"></i> Experience & Technical Exposure</h2>
+                            <h2 class="skills-toggle-title" id="skillsToggle">
+                                <i class="fas fa-project-diagram"></i> Experience & Technical Exposure 
+                                <span class="layout-toggle-icon" id="layoutToggleIcon" title="Click to switch to scrolling view">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </span>
+                            </h2>
                             
-                            <!-- Skills section - Changed from carousel to fixed grid layout -->
-                            <div class="skills-grid-logos">
+                            <!-- Fixed Grid Layout (Default - Visible) -->
+                            <div class="skills-grid-logos" id="skillsGridLayout">
                                 <div class="skills-logos-container">
                                     <!-- Programming Languages -->
                                     <div class="skills-logo-category">
@@ -248,7 +253,7 @@
                                                 <span>PyCharm</span>
                                             </div>
                                             <div class="logo-item" title="Eclipse">
-                                                <i class="fa fa-terminal"></i>
+                                                <i class="fas fa-code"></i>
                                                 <span>Eclipse</span>
                                             </div>
                                             <div class="logo-item" title="Figma">
@@ -271,9 +276,387 @@
                                                 <img src="https://skillicons.dev/icons?i=anaconda" alt="Anaconda">
                                                 <span>Anaconda</span>
                                             </div>
+                                            <div class="logo-item" title="Arduino">
+                                                <img src="https://skillicons.dev/icons?i=arduino" alt="Arduino">
+                                                <span>Arduino</span>
+                                            </div>
+                                            <div class="logo-item" title="Raspberry Pi">
+                                                <img src="https://skillicons.dev/icons?i=raspberrypi" alt="Raspberry Pi">
+                                                <span>Raspberry Pi</span>
+                                            </div>
                                             <div class="logo-item" title="Discord">
                                                 <img src="https://skillicons.dev/icons?i=discord" alt="Discord">
                                                 <span>Discord</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Marquee Scrolling Layout by Categories (Hidden by default) -->
+                            <div class="skills-scrolling-layout" id="skillsScrollingLayout" style="display: none;">
+                                <div class="scrolling-container">
+                                    <!-- Programming Languages Category -->
+                                    <div class="scrolling-category">
+                                        <div class="scrolling-category-header">
+                                            <div class="scrolling-category-title">
+                                                <i class="fas fa-laptop-code"></i>
+                                                Programming Languages
+                                            </div>
+                                        </div>
+                                        <div class="scrolling-track-container">
+                                            <div class="scrolling-track" id="programmingTrack">
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=python" alt="Python">
+                                                    <span>Python</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=js" alt="JavaScript">
+                                                    <span>JavaScript</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=java" alt="Java">
+                                                    <span>Java</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=php" alt="PHP">
+                                                    <span>PHP</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=html" alt="HTML">
+                                                    <span>HTML</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=css" alt="CSS">
+                                                    <span>CSS</span>
+                                                </div>
+                                                <!-- Duplicate for seamless scrolling -->
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=python" alt="Python">
+                                                    <span>Python</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=js" alt="JavaScript">
+                                                    <span>JavaScript</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=java" alt="Java">
+                                                    <span>Java</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=php" alt="PHP">
+                                                    <span>PHP</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=html" alt="HTML">
+                                                    <span>HTML</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=css" alt="CSS">
+                                                    <span>CSS</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Frameworks & Libraries Category -->
+                                    <div class="scrolling-category">
+                                        <div class="scrolling-category-header">
+                                            <div class="scrolling-category-title">
+                                                <i class="fas fa-layer-group"></i>
+                                                Frameworks & Libraries
+                                            </div>
+                                        </div>
+                                        <div class="scrolling-track-container">
+                                            <div class="scrolling-track" id="frameworksTrack">
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=flask" alt="Flask">
+                                                    <span>Flask</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=fastapi" alt="FastAPI">
+                                                    <span>FastAPI</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=django" alt="Django">
+                                                    <span>Django</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <i class="fas fa-brain"></i>
+                                                    <span>PyTorch</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=react" alt="React">
+                                                    <span>React</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=vue" alt="Vue">
+                                                    <span>Vue</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=laravel" alt="Laravel">
+                                                    <span>Laravel</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=bootstrap" alt="Bootstrap">
+                                                    <span>Bootstrap</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=tailwind" alt="Tailwind">
+                                                    <span>Tailwind</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=jquery" alt="jQuery">
+                                                    <span>jQuery</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <i class="fab fa-html5"></i>
+                                                    <span>HTMX</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=electron" alt="Electron">
+                                                    <span>Electron</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js">
+                                                    <span>Node.js</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=discordjs" alt="Discord.js">
+                                                    <span>Discord.js</span>
+                                                </div>
+                                                <!-- Duplicate for seamless scrolling -->
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=flask" alt="Flask">
+                                                    <span>Flask</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=fastapi" alt="FastAPI">
+                                                    <span>FastAPI</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=django" alt="Django">
+                                                    <span>Django</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <i class="fas fa-brain"></i>
+                                                    <span>PyTorch</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=react" alt="React">
+                                                    <span>React</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=vue" alt="Vue">
+                                                    <span>Vue</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=laravel" alt="Laravel">
+                                                    <span>Laravel</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=bootstrap" alt="Bootstrap">
+                                                    <span>Bootstrap</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=tailwind" alt="Tailwind">
+                                                    <span>Tailwind</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=jquery" alt="jQuery">
+                                                    <span>jQuery</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <i class="fab fa-html5"></i>
+                                                    <span>HTMX</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=electron" alt="Electron">
+                                                    <span>Electron</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js">
+                                                    <span>Node.js</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=discordjs" alt="Discord.js">
+                                                    <span>Discord.js</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Tools & Technologies Category -->
+                                    <div class="scrolling-category">
+                                        <div class="scrolling-category-header">
+                                            <div class="scrolling-category-title">
+                                                <i class="fas fa-tools"></i>
+                                                Tools & Technologies
+                                            </div>
+                                        </div>
+                                        <div class="scrolling-track-container">
+                                            <div class="scrolling-track" id="toolsTrack">
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=mysql" alt="MySQL">
+                                                    <span>MySQL</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=mongodb" alt="MongoDB">
+                                                    <span>MongoDB</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=postgres" alt="PostgreSQL">
+                                                    <span>PostgreSQL</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <i class="fas fa-database"></i>
+                                                    <span>SQLite</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=docker" alt="Docker">
+                                                    <span>Docker</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=git" alt="Git">
+                                                    <span>Git</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=github" alt="GitHub">
+                                                    <span>GitHub</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=linux" alt="Linux">
+                                                    <span>Linux</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=ubuntu" alt="Ubuntu">
+                                                    <span>Ubuntu</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=vscode" alt="VS Code">
+                                                    <span>VS Code</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <i class="fas fa-code"></i>
+                                                    <span>PyCharm</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <i class="fas fa-code"></i>
+                                                    <span>Eclipse</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=figma" alt="Figma">
+                                                    <span>Figma</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=npm" alt="NPM">
+                                                    <span>NPM</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <i class="fas fa-window-restore"></i>
+                                                    <span>Qt</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <i class="fas fa-eye"></i>
+                                                    <span>OpenCV</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=anaconda" alt="Anaconda">
+                                                    <span>Anaconda</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=arduino" alt="Arduino">
+                                                    <span>Arduino</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=raspberrypi" alt="Raspberry Pi">
+                                                    <span>Raspberry Pi</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=discord" alt="Discord">
+                                                    <span>Discord</span>
+                                                </div>
+                                                <!-- Duplicate for seamless scrolling -->
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=mysql" alt="MySQL">
+                                                    <span>MySQL</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=mongodb" alt="MongoDB">
+                                                    <span>MongoDB</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=postgres" alt="PostgreSQL">
+                                                    <span>PostgreSQL</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <i class="fas fa-database"></i>
+                                                    <span>SQLite</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=docker" alt="Docker">
+                                                    <span>Docker</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=git" alt="Git">
+                                                    <span>Git</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=github" alt="GitHub">
+                                                    <span>GitHub</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=linux" alt="Linux">
+                                                    <span>Linux</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=ubuntu" alt="Ubuntu">
+                                                    <span>Ubuntu</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=vscode" alt="VS Code">
+                                                    <span>VS Code</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <i class="fas fa-code"></i>
+                                                    <span>PyCharm</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <i class="fas fa-code"></i>
+                                                    <span>Eclipse</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=figma" alt="Figma">
+                                                    <span>Figma</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=npm" alt="NPM">
+                                                    <span>NPM</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <i class="fas fa-window-restore"></i>
+                                                    <span>Qt</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <i class="fas fa-eye"></i>
+                                                    <span>OpenCV</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=anaconda" alt="Anaconda">
+                                                    <span>Anaconda</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=arduino" alt="Arduino">
+                                                    <span>Arduino</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=raspberrypi" alt="Raspberry Pi">
+                                                    <span>Raspberry Pi</span>
+                                                </div>
+                                                <div class="scrolling-item">
+                                                    <img src="https://skillicons.dev/icons?i=discord" alt="Discord">
+                                                    <span>Discord</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -500,5 +883,6 @@
     <script src="js/theme.js"></script>
     <script src="js/main.js"></script>
     <script src="js/projects.js"></script>
+    <script src="js/skillsToggle.js"></script>
 </body>
 </html>
