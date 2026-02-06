@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 track.style.animationPlayState = 'running';
             }
         });
-    });
+    }); 
     
     // Handle window resize to restart animation if needed
     window.addEventListener('resize', function() {
