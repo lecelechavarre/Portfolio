@@ -483,6 +483,296 @@ main {
     gap: 0.5rem;
 }
 
+/* SKILLS TOGGLE HEADER */
+.skills-toggle-header {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 1rem;
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.skills-toggle-header:hover {
+    color: var(--primary-color);
+}
+
+.skills-toggle-header:hover .toggle-indicator {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+/* SCROLLING LAYOUT BY CATEGORIES */
+.skills-scrolling-layout {
+    margin-top: 1rem;
+}
+
+.scrolling-category {
+    margin-bottom: 2rem;
+}
+
+.scrolling-category:last-child {
+    margin-bottom: 0;
+}
+
+.scrolling-category-header {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.scrolling-category-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.scrolling-track-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 1rem 0;
+}
+
+.scrolling-track {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    will-change: transform;
+}
+
+/* Different speeds and directions for each category */
+#programmingTrack {
+    animation: scroll-left 40s linear infinite;
+}
+
+#frameworksTrack {
+    animation: scroll-right 70s linear infinite;
+}
+
+#toolsTrack {
+    animation: scroll-right 90s linear infinite;
+}
+
+/* Animation for right to left scrolling */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Animation for left to right scrolling */
+@keyframes scroll-right {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.scrolling-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    background: var(--card-bg);
+    box-shadow: 0 2px 8px var(--shadow-color);
+    min-width: 100px;
+    min-height: 100px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.scrolling-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px var(--shadow-color);
+}
+
+.scrolling-item img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
+.scrolling-item i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.scrolling-item span {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-color);
+    text-align: center;
+    word-break: break-word;
+    line-height: 1.2;
+}
+
+/* Pause animation on hover for each category */
+.scrolling-track-container:hover .scrolling-track {
+    animation-play-state: paused;
+}
+
+.toggle-indicator {
+    font-size: 0.8rem;
+    color: var(--paragraph-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.toggle-indicator i {
+    font-size: 0.9rem;
+}
+
+/* SKILLS CONTAINER TOGGLE */
+.skills-container-toggle {
+    position: relative;
+    width: 100%;
+}
+
+.skills-grid-logos,
+.skills-categories {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.skills-grid-logos:not(.active),
+.skills-categories:not(.active) {
+    display: none;
+}
+
+.skills-grid-logos.active,
+.skills-categories.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+/* SKILLS TOGGLE TITLE */
+.skills-toggle-title {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.skills-toggle-title:hover {
+    color: var(--primary-color);
+}
+
+.layout-toggle-icon {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(52, 152, 219, 0.1);
+}
+
+.layout-toggle-icon:hover {
+    opacity: 1;
+    background: rgba(52, 152, 219, 0.2);
+    transform: rotate(90deg);
+}
+
+/* SCROLLING LAYOUT */
+.skills-scrolling-layout {
+    margin-top: 1rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.scrolling-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 1rem 0;
+}
+
+.scrolling-track {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    animation: scroll-left 120s linear infinite;
+    will-change: transform;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.scrolling-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    background: var(--card-bg);
+    box-shadow: 0 2px 8px var(--shadow-color);
+    min-width: 100px;
+    min-height: 100px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.scrolling-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px var(--shadow-color);
+}
+
+.scrolling-item img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
+.scrolling-item i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.scrolling-item span {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-color);
+    text-align: center;
+    word-break: break-word;
+    line-height: 1.2;
+}
+
+/* Pause animation on hover */
+.scrolling-container:hover .scrolling-track {
+    animation-play-state: paused;
+}
+
+/* The rest of the CSS remains the same as before... */
+
 .logos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
