@@ -1,6 +1,9 @@
 /* RESPONSIVE DESIGN - Mobile First Approach */
 
 /* Mobile Devices (default styles) */
+/* RESPONSIVE DESIGN - Mobile First Approach */
+
+/* Mobile Devices (default styles) */
 .mobile-menu-toggle {
     display: flex !important;
 }
@@ -24,6 +27,18 @@ main {
 
 .hero-name {
     margin-top: 0.5rem;
+}
+
+/* Skills Toggle Header for Mobile */
+.skills-toggle-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.toggle-indicator {
+    align-self: flex-start;
+    margin-left: 1.8rem;
 }
 
 /* Skills Logo Grid for Mobile */
@@ -64,6 +79,16 @@ main {
         border: 1px solid var(--glass-border);
         color: var(--primary-color);
         box-shadow: 0 12px 40px var(--glass-shadow);
+    }
+    
+    .skills-toggle-header {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .toggle-indicator {
+        align-self: center;
+        margin-left: 0;
     }
     
     .logos-grid {
@@ -366,7 +391,8 @@ main {
     .project-link:hover,
     .cta-button:hover,
     .social-icon:hover,
-    .theme-toggle-btn:hover {
+    .theme-toggle-btn:hover,
+    .skills-toggle-header:hover {
         transform: none;
     }
     
@@ -391,6 +417,10 @@ main {
     
     .mobile-menu-toggle:active {
         transform: scale(0.95);
+    }
+    
+    .skills-toggle-header:active {
+        opacity: 0.8;
     }
 }
 
@@ -422,7 +452,8 @@ main {
     .theme-toggle-btn,
     .social-icon,
     .view-all-container,
-    .projects-filter {
+    .projects-filter,
+    .toggle-indicator {
         display: none !important;
     }
     
@@ -459,5 +490,13 @@ main {
         border: 1px solid #000;
         color: #000;
         background: none;
+    }
+    
+    .skills-categories {
+        display: block !important;
+    }
+    
+    .skills-grid-logos {
+        display: none !important;
     }
 }
