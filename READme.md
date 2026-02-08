@@ -40,5 +40,5 @@ Unless otherwise specified in a subproject, code in this repository is provided 
 - GitHub: [lecelechavarre](https://github.com/lecelechavarre)
 
 If you have questions about a specific project in this repository, open an issue in the corresponding project folder (or in this repo) with details so it can be tracked.
-
+ 
 ---
