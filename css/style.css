@@ -494,6 +494,7 @@ main {
     margin-bottom: 1.5rem;
 }
 
+
 .skills-toggle-header:hover {
     color: var(--primary-color);
 }
@@ -827,6 +828,52 @@ main {
     margin-top: 0.3rem;
     word-break: break-word;
     line-height: 1.2;
+}
+
+/* MOBILE VIEW: Grid mode - Small logo icons without text */
+@media (max-width: 767px) {
+    /* Only apply to grid layout, not scrolling layout */
+    .skills-grid-logos .logos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 0.8rem;
+    }
+
+    .skills-grid-logos .logo-item {
+        min-height: auto;
+        padding: 0.6rem;
+        border-radius: 8px;
+    }
+
+    .skills-grid-logos .logo-item img {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 0.3rem;
+    }
+
+    .skills-grid-logos .logo-item i {
+        font-size: 1.8rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    /* Hide text labels on mobile in grid mode */
+    .skills-grid-logos .logo-item span {
+        display: none;
+    }
+    
+    /* Keep category titles visible */
+    .skills-grid-logos .category-title {
+        font-size: 1.1rem;
+    }
+    
+    /* Adjust category spacing for mobile */
+    .skills-grid-logos .skills-logo-category {
+        margin-bottom: 1.2rem;
+    }
+    
+    /* Ensure scrolling layout still shows text */
+    .skills-scrolling-layout .scrolling-item span {
+        display: block;
+    }
 }
 
 /* CTA BOX */
