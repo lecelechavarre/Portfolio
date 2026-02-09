@@ -1,4 +1,4 @@
-# Dev
+# Dev 
 
 Welcome to the "Dev" repository — a personal collection of development experiments, utilities, demos, and small projects by [lecelechavarre](https://github.com/lecelechavarre). This repository collects code snippets, prototypes, learning projects, and tooling I use while exploring new technologies.
  
