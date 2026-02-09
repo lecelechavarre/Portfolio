@@ -1,9 +1,6 @@
 /* RESPONSIVE DESIGN - Mobile First Approach */
 
 /* Mobile Devices (default styles) */
-/* RESPONSIVE DESIGN - Mobile First Approach */
-
-/* Mobile Devices (default styles) */
 .mobile-menu-toggle {
     display: flex !important;
 }
@@ -29,22 +26,8 @@ main {
     margin-top: 0.5rem;
 }
 
-/* Skills Toggle Header for Mobile */
-.skills-toggle-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-}
-
-.toggle-indicator {
-    align-self: flex-start;
-    margin-left: 1.8rem;
-}
-
-/* Skills Logo Grid for Mobile */
-.logos-grid {
-    grid-template-columns: repeat(2, 1fr);
-}
+/* Skills Logo Grid for Mobile - Already handled in main CSS */
+/* Scrolling layout still shows full items on mobile */
 
 /* Small Tablets and Large Phones (≥ 576px) */
 @media (min-width: 576px) {
@@ -81,31 +64,31 @@ main {
         box-shadow: 0 12px 40px var(--glass-shadow);
     }
     
-    .skills-toggle-header {
-        flex-direction: row;
-        align-items: center;
-    }
-    
-    .toggle-indicator {
-        align-self: center;
-        margin-left: 0;
-    }
-    
-    .logos-grid {
+    /* Grid layout: Show text on tablets and larger */
+    .skills-grid-logos .logos-grid {
         grid-template-columns: repeat(3, 1fr);
     }
     
-    .logo-item {
+    .skills-grid-logos .logo-item span {
+        display: block; /* Show text on tablets */
+    }
+    
+    .skills-grid-logos .logo-item {
         min-height: 130px;
     }
     
-    .logo-item img {
+    .skills-grid-logos .logo-item img {
         width: 52px;
         height: 52px;
     }
     
-    .logo-item i {
+    .skills-grid-logos .logo-item i {
         font-size: 2.8rem;
+    }
+    
+    /* Scrolling layout adjustments */
+    .scrolling-item span {
+        display: block;
     }
     
     .tech-components {
@@ -180,8 +163,14 @@ main {
         flex: 1;
     }
     
-    .logos-grid {
+    /* Grid layout for tablets */
+    .skills-grid-logos .logos-grid {
         grid-template-columns: repeat(4, 1fr);
+    }
+    
+    /* Scrolling layout for tablets */
+    .scrolling-item span {
+        display: block;
     }
     
     .timeline-header {
@@ -249,25 +238,27 @@ main {
         padding: 2.5rem;
     }
     
-    .logos-grid {
+    /* Grid layout for larger screens */
+    .skills-grid-logos .logos-grid {
         grid-template-columns: repeat(5, 1fr);
     }
     
-    .logo-item {
+    .skills-grid-logos .logo-item {
         min-height: 140px;
         padding: 1.2rem;
     }
     
-    .logo-item img {
+    .skills-grid-logos .logo-item img {
         width: 56px;
         height: 56px;
     }
     
-    .logo-item i {
+    .skills-grid-logos .logo-item i {
         font-size: 3rem;
     }
     
-    .logo-item span {
+    .skills-grid-logos .logo-item span {
+        display: block;
         font-size: 0.9rem;
     }
     
@@ -323,7 +314,8 @@ main {
         max-width: 800px;
     }
     
-    .logos-grid {
+    /* Grid layout for desktops */
+    .skills-grid-logos .logos-grid {
         grid-template-columns: repeat(6, 1fr);
     }
     
@@ -368,7 +360,8 @@ main {
         max-width: 1320px;
     }
     
-    .logos-grid {
+    /* Grid layout for large desktops */
+    .skills-grid-logos .logos-grid {
         grid-template-columns: repeat(7, 1fr);
     }
     
@@ -384,6 +377,7 @@ main {
 /* Touch Device Optimizations */
 @media (hover: none) and (pointer: coarse) {
     .logo-item:hover,
+    .scrolling-item:hover,
     .skill-badge:hover,
     .project-card:hover,
     .skill-item:hover,
@@ -391,12 +385,12 @@ main {
     .project-link:hover,
     .cta-button:hover,
     .social-icon:hover,
-    .theme-toggle-btn:hover,
-    .skills-toggle-header:hover {
+    .theme-toggle-btn:hover {
         transform: none;
     }
     
     .logo-item:active,
+    .scrolling-item:active,
     .skill-badge:active,
     .project-card:active,
     .skill-item:active {
@@ -418,10 +412,6 @@ main {
     .mobile-menu-toggle:active {
         transform: scale(0.95);
     }
-    
-    .skills-toggle-header:active {
-        opacity: 0.8;
-    }
 }
 
 /* High Resolution Displays */
@@ -431,6 +421,10 @@ main {
     }
     
     .logo-item {
+        box-shadow: 0 2px 6px var(--shadow-color);
+    }
+    
+    .scrolling-item {
         box-shadow: 0 2px 6px var(--shadow-color);
     }
     
@@ -452,8 +446,7 @@ main {
     .theme-toggle-btn,
     .social-icon,
     .view-all-container,
-    .projects-filter,
-    .toggle-indicator {
+    .projects-filter {
         display: none !important;
     }
     
@@ -473,11 +466,17 @@ main {
     }
     
     .logo-item,
+    .scrolling-item,
     .skill-badge,
     .project-card,
     .skill-category {
         box-shadow: none;
         border: 1px solid #ddd;
+    }
+    
+    /* Show text labels in print */
+    .skills-grid-logos .logo-item span {
+        display: block !important;
     }
     
     a {
@@ -490,13 +489,5 @@ main {
         border: 1px solid #000;
         color: #000;
         background: none;
-    }
-    
-    .skills-categories {
-        display: block !important;
-    }
-    
-    .skills-grid-logos {
-        display: none !important;
     }
 }
